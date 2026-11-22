@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F3F3F4"><link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<title>Trilha Coração Branco</title>
+<style>
+:root{--bg:#050708;--c:#111416;--c2:#181B1D;--m:#A5A8AA;--l:#D7FF00;--r:#FF3030;--b:#1D2123}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:#fff;font-family:system-ui,-apple-system,Roboto,sans-serif}
+#app{max-width:480px;margin:0 auto;height:100%;position:relative;overflow:hidden}
+main{height:100%;overflow-y:auto;padding:calc(env(safe-area-inset-top) + 16px) 18px calc(100px + env(safe-area-inset-bottom))}
+h1{font-size:27px;line-height:1.15;margin:6px 0 10px}h2,h3{margin:8px 0}
+.lime{color:var(--l)}small,.m{color:var(--m);font-size:12px;line-height:1.5}
+a{color:var(--l);text-decoration:underline;cursor:pointer}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.brand{font-weight:700}
+.sos{background:var(--r);color:#fff;border:0;border-radius:10px;padding:8px 15px;font-weight:900}
+.row{display:flex;gap:9px;margin:10px 0}
+.stat{flex:1;background:var(--c);border-radius:13px;padding:12px;display:flex;flex-direction:column;gap:3px}.stat b{color:var(--l);font-size:17px}
+.card{background:var(--c);border:1px solid var(--b);border-radius:15px;padding:15px;margin:12px 0}
+.vs{font-size:19px;line-height:1.4;margin:8px 0}
+.btn{border:0;border-radius:13px;padding:15px;font-weight:900;font-size:15px;color:#071000;background:var(--l);width:100%;cursor:pointer}
+.btn.r{background:var(--r);color:#fff}.btn.g{background:var(--c2);color:#fff}.btn:disabled{opacity:.4}
+textarea,input{width:100%;background:var(--c);color:#fff;border:1px solid #272B2D;border-radius:12px;padding:12px;font:inherit;margin-top:8px}
+textarea{min-height:90px;resize:none}
+nav{position:absolute;left:0;right:0;bottom:0;background:#111416;border-top:1px solid #202426;display:flex;padding-bottom:env(safe-area-inset-bottom)}
+nav button{flex:1;background:0;border:0;color:#9B9EA0;padding:10px 0 8px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav i{font-style:normal;font-size:20px;filter:grayscale(1)}nav .on{color:var(--l)}nav .on i{filter:none}
+#sheet{position:absolute;inset:0;background:rgba(0,0,0,.8);display:none;align-items:flex-end;z-index:5}#sheet.on{display:flex}
+#sheet>div{background:#101315;border-radius:24px 24px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:92%;overflow-y:auto}
+.step{background:var(--c);border-radius:10px;padding:10px;margin:4px 0;display:flex;gap:10px}
+.node{width:40px;height:40px;border-radius:50%;border:2px solid #777;display:flex;align-items:center;justify-content:center;font-weight:900;background:#171A1C;flex:none}
+.node.d{border-color:var(--l)}.node.c{border-color:#FFD000}
+.path{display:flex;gap:14px;align-items:center;padding:10px 0}
+.ent{background:var(--c);border-radius:12px;padding:12px;margin:8px 0;display:flex;gap:10px;align-items:center}
+.ic{width:32px;height:32px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;flex:none}
+.chip{background:var(--c2);padding:8px 15px;border-radius:12px;border:0;color:#fff;font-weight:700}.chip.on{background:var(--l);color:#071000}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal div{aspect-ratio:1;border-radius:50%;background:#222629;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--m)}
+.cal .v{background:var(--l);color:#071000}.cal .r{background:var(--r);color:#fff}.cal .t{outline:2px solid #fff}
+.mk{width:46px;height:46px;border-radius:14px;background:#292D2F;display:flex;align-items:center;justify-content:center;margin:0 auto 4px}.mk.on{background:#E8B928}
+.big{font-size:46px;font-weight:700;text-align:center}
+
+:root{--bg:#F3F3F4;--c:#fff;--c2:#ECECEE;--t:#141516;--m:#6B6F73;--l:#E11D1D;--r:#C81E1E;--b:#E2E2E5;--g:#1FA64A}
+@media(prefers-color-scheme:dark){:root{--bg:#0B0C0D;--c:#17191B;--c2:#222528;--t:#F5F5F5;--m:#A5A8AA;--b:#26292C}}
+html,body{background:var(--bg);color:var(--t)}textarea,input{color:var(--t);border-color:var(--b)}
+nav{background:var(--c);border-color:var(--b)}nav button{color:var(--m)}nav .on{color:var(--l)}
+#sheet{z-index:10}#sheet>div{background:var(--c)}
+.btn{color:#fff}.btn.ok{background:var(--g)}.btn.g{color:var(--t)}.btn small{color:#fff;opacity:.9}
+.chip{color:var(--t)}.chip.on{color:#fff}
+.node{background:var(--c2)}.node.d{border-color:var(--g)}.node.c{border-color:var(--l)}
+.cal div{background:var(--c2)}.cal .v{background:var(--g);color:#fff}.cal .r{color:#fff}.cal .t{outline-color:var(--t)}
+.mk{background:var(--c2)}.mk.on{background:#E8B928}.card{box-shadow:0 1px 3px #0001}
+.hero{background:linear-gradient(#0005,#000b),url(img/banner.jpg) center/cover,linear-gradient(135deg,#2b2b2e,#7a1414);color:#fff;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;border:0}.hero small{color:#ddd}.hero h3{margin:2px 0 0}
+#lk{position:absolute;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;background:linear-gradient(#0008,#000e),url(img/abertura.jpg) center/cover,#111;color:#fff}#lk.on{display:flex}
+.m2{color:#cfcfcf;margin:0}#dots{display:flex;gap:12px;margin:10px}#dots i{width:14px;height:14px;border-radius:50%;border:2px solid #fff7}#dots i.f{background:#fff}
+#dots.sh{animation:sk .3s}@keyframes sk{25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
+.pad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;margin:6px 0}.pad button{height:72px;border-radius:50%;border:0;background:#ffffff22;color:#fff;font-size:26px}.pad button:empty{visibility:hidden}
+</style></head><body><div id="app"><main id="m"></main>
+<div id="lk"></div><nav id="nav"></nav><div id="sheet"><div id="sh"></div></div></div>
+<script>
+const $=s=>document.querySelector(s),K='cb1';
+const V=[["Cria em mim, ó Deus, um coração puro e renova em mim um espírito reto.","Salmos 51:10"],["Guardei no meu coração as tuas palavras, para não pecar contra ti.","Salmos 119:11"],["Fiel é Deus, que não vos deixará tentar acima do que podeis.","1 Coríntios 10:13"],["Perto está o Senhor dos que têm o coração quebrantado.","Salmos 34:18"],["Guarda o teu coração, porque dele procedem as saídas da vida.","Provérbios 4:23"],["Agora nenhuma condenação há para os que estão em Cristo Jesus.","Romanos 8:1"],["Não nos cansemos de fazer o bem, porque a seu tempo ceifaremos.","Gálatas 6:9"]];
+const TEMAS=["Compromisso Verdadeiro","Entendendo o Ciclo do Pecado","Identidade em Cristo","Guardando os Olhos e o Coração","A Raiz da Vergonha","Vulnerabilidade e Confissão","Renovando a Mente","Domínio Próprio como Fruto do Espírito","Reconstruindo Limites","Vitória Contra o Pecado","Aliados e Comunidade","Gatilhos Digitais","Pureza nos Relacionamentos","Perdão e Graça","Hábitos que Sustentam","Enfrentando a Solidão","Propósito além da Luta","Perseverança","Restaurando a Confiança","Alegria e Gratidão","Prevenindo Recaídas","Servindo aos Outros","Firmes até o Fim","Nova Identidade e Propósito"];
+/* EDITE AQUI: devocional por dia (1 a 168). Dias sem texto usam o modelo padrão. */
+const DEV={
+1:{t:"O primeiro passo é a verdade",tx:"Toda restauração começa com uma frase difícil de dizer, mesmo que só para si: “eu tenho lutado com isso”.\n\nAdmitir não é fraqueza. É o ponto onde a graça de Deus encontra você como você realmente está. Hoje, em vez de se esconder, escolha a verdade.",or:"Pai, hoje eu escolho a verdade. Recebo a Tua graça e peço força para o próximo passo. Amém.",ds:"Escreva, só para você, uma frase honesta sobre a sua luta."},
+2:{t:"Conhecendo o ciclo",tx:"Quase toda queda tem um caminho antes dela: um gatilho, um pensamento, uma pequena escolha. Quando você enxerga o ciclo, deixa de ser pego de surpresa.\n\nO objetivo não é ter medo, e sim se antecipar.",or:"Senhor, abre os meus olhos para os sinais antes da queda. Dá-me sabedoria para sair cedo. Amém.",ds:"Anote 3 situações, horários ou lugares que costumam preceder a tentação."},
+3:{t:"Colocando a fé em ação",tx:"A fé é mais do que sentimentos guardados no coração: ela molda atitudes e decisões.\n\nColocar a fé em ação é permitir que aquilo em que você crê defina o que você faz hoje, nas pequenas escolhas.",or:"Pai, ajuda-me a caminhar na verdade e a depender da Tua graça todos os dias. Amém.",ds:"Identifique um gatilho e anote uma estratégia concreta para evitá-lo."}};
+const dflt={t:"Reflexão do dia",tx:"O devocional deste dia ainda não foi escrito. Medite no versículo acima, ore com sinceridade e registre como foi o seu dia.",or:"Senhor, guia os meus passos hoje e fortalece a minha decisão. Amém.",ds:"Pense em uma atitude prática que sustente a sua decisão hoje."};
+let D=Object.assign({start:null,e:{},contact:'',pin:'',pr:{},fav:{},fs:17},JSON.parse(localStorage.getItem(K)||'{}'));
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const add=(s,n)=>{const x=new Date(s+'T00:00');x.setDate(x.getDate()+n);return iso(x)};
+const today=()=>iso(new Date()),dd=(a,b)=>Math.round((new Date(b+'T00:00')-new Date(a+'T00:00'))/864e5);
+const dia=()=>Math.min(168,Math.max(1,dd(D.start,today())+1)),sem=()=>Math.ceil(dia()/7);
+const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode('cb'+s)))].map(x=>x.toString(16).padStart(2,'0')).join('');
+function stats(){const ks=Object.keys(D.e).sort();let vit=0,rec=0,best=0,run=0,p=null;
+for(const k of ks){if(D.e[k].s=='v'){vit++;run=(p&&add(p,1)==k&&D.e[p].s=='v')?run+1:1;best=Math.max(best,run)}else{rec++;run=0}p=k}
+let cur=0,d=today();if(!(D.e[d]&&D.e[d].s=='v'))d=add(d,-1);
+while(D.e[d]&&D.e[d].s=='v'){cur++;d=add(d,-1)}return{vit,rec,best,cur,tot:ks.length}}
+let RT='',cm=0,pk='',tab='hoje',draft='',alt=false,devDay=0,filt='all',spk=false;
+let T={m:10,left:600,end:0,run:false,id:0,wl:null};
+const sheet=h=>{$('#sh').innerHTML=h;$('#sheet').classList.add('on')},closeS=()=>$('#sheet').classList.remove('on');
+const TABS=[['hoje','🏠','Hoje'],['oracao','⏱️','Oração'],['dev','📖','Devocional'],['diario','📓','Diário'],['perfil','👤','Perfil']];
+function render(){if(!D.start)return boas();
+$('#nav').innerHTML=TABS.map(t=>`<button data-a="tab" data-v="${t[0]}" class="${tab==t[0]||(tab=='trilha'&&t[0]=='hoje')?'on':''}"><i>${t[1]}</i>${t[2]}</button>`).join('');
+$('#m').innerHTML=({hoje,oracao,dev,diario,perfil,trilha})[tab]();paint()}
+const hdr=t=>`<div class="top"><span class="brand">${t}</span><button class="sos" data-a="sos">SOS</button></div>`;
+function hoje(){const t=today(),en=D.e[t],st=stats(),d=dia(),w=sem(),v=V[(d-1)%V.length];
+return hdr('<img src="logo.png" width="26" style="vertical-align:middle;border-radius:7px"> Trilha')+`<h2 style="margin:0">${D.name?'Olá, '+esc(D.name)+'!':''}</h2><div class="lime">Dia ${String(d).padStart(2,'0')} de 168 · <a data-a="tab" data-v="trilha">ver trilha</a></div>
+<h1>Semana ${w}.<br><span class="lime">${TEMAS[w-1]}.</span></h1>
+<div class="row"><div class="stat"><small>🔥 Sequência atual</small><b>${st.cur} dia${st.cur==1?'':'s'}</b></div><div class="stat"><small>🏆 Melhor sequência</small><b>${st.best} dia${st.best==1?'':'s'}</b></div></div>
+<div class="card hero" data-a="tab" data-v="dev"><small>Ensinamento do dia ›</small><h3>${DEV[d]?DEV[d].t:dflt.t}</h3></div>
+<div class="card"><small>Versículo do dia</small><p class="vs">${v[0]}</p><span class="lime">${v[1]}</span></div>
+${d>1&&dd(D.lastRep||D.start,t)>=(D.freq||7)?`<div class="card"><b class="lime">📨 Hora de enviar seu relatório</b><p class="m">Compartilhe seu progresso com ${esc(D.dn||'seu discipulador')}.</p><button class="btn" data-a="rel">Enviar relatório</button></div>`:''}${en&&!alt?`<div class="card"><b class="lime">${en.s=='v'?'✔ Hoje você resistiu':'✖ Hoje você recaiu'}</b><p class="m">${en.s=='v'?'Continue firme.':'Uma queda não define a sua história. Levante-se e continue.'}</p><a data-a="alt">Alterar registro</a></div>`
+:`<div class="row"><button class="btn ok" data-a="reg" data-v="v">✔ RESISTI<br><small>Estou firme!</small></button><button class="btn r" data-a="reg" data-v="r">✖ RECAÍ<br><small>Preciso me levantar!</small></button></div>`}
+<div class="card"><small>Como foi seu dia? (opcional)</small><div class="row" style="justify-content:space-between">${['😞','😕','😐','🙂','😄'].map((x,i)=>`<button class="chip ${(D.mood||{})[t]===i?'on':''}" data-a="mood" data-v="${i}" style="font-size:20px">${x}</button>`).join('')}</div><textarea id="nota" maxlength="200" placeholder="Escreva uma nota rápida..." data-i="nota">${esc(en?en.n:draft)}</textarea><small id="cnt">${(en?en.n:draft).length}/200</small></div>`}
+function trilha(){const w=sem();return hdr('Trilha')+`<p class="m">Sua jornada de 168 dias · 24 semanas</p>`+TEMAS.map((x,i)=>`<div class="path" style="margin-left:${[0,28,56,28][i%4]}px"><div class="node ${i+1<w?'d':i+1==w?'c':''}">${i+1<w?'✔':i+1}</div><div><b>${x}</b><br><small>${i+1<w?'Concluída':i+1==w?'Semana atual':'Futura'}</small></div></div>`).join('')+`<a data-a="tab" data-v="hoje">‹ voltar</a>`}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function oracao(){return hdr('Oração · Tempo com Deus')+`<p class="m" style="text-align:center">Escolha o tempo</p><div class="row">${[10,15,20].map(m=>`<button class="btn ${T.m==m?'':'g'}" data-a="min" data-v="${m}" ${T.run?'disabled':''}>${m} min</button>`).join('')}</div>
+<div style="position:relative;width:260px;height:260px;margin:24px auto"><svg width="260" height="260" viewBox="0 0 260 260" style="transform:rotate(-90deg)"><circle cx="130" cy="130" r="105" fill="none" stroke="#252A2C" stroke-width="14"/><circle id="rg" cx="130" cy="130" r="105" fill="none" stroke="#D7FF00" stroke-width="14" stroke-linecap="round" stroke-dasharray="660" stroke-dashoffset="0"/></svg>
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="big" id="tm">${fmt(T.left)}</div><small>Tempo restante</small><button class="btn g" style="width:56px;height:56px;border-radius:50%;margin-top:10px;padding:0;font-size:20px" data-a="${T.run?'pause':'play'}">${T.run?'❚❚':'▶'}</button></div></div>
+<p class="m" style="text-align:center">“Buscai o Senhor enquanto se pode achar, invocai-o enquanto está perto.”<br><span class="lime">Isaías 55:6</span></p>
+<div class="card m">🔒 Só é possível concluir quando o tempo chegar ao fim.</div><button class="btn g" data-a="cancel">✕ Cancelar</button>
+<p class="m" style="text-align:center">Total orado: ${Object.values(D.pr).reduce((a,b)=>a+b,0)} min</p>`}
+function paint(){const a=$('#tm'),r=$('#rg');if(a)a.textContent=fmt(T.left);if(r)r.style.strokeDashoffset=660*(1-T.left/(T.m*60))}
+function tick(){if(!T.run)return;T.left=Math.max(0,Math.ceil((T.end-Date.now())/1000));paint();if(T.left<=0)fim()}
+async function play(){T.end=Date.now()+T.left*1000;T.run=true;clearInterval(T.id);T.id=setInterval(tick,250);try{T.wl=await navigator.wakeLock.request('screen')}catch(e){}render()}
+function stop(){T.run=false;clearInterval(T.id);try{T.wl&&T.wl.release()}catch(e){}}
+function fim(){stop();const t=today();D.pr[t]=(D.pr[t]||0)+T.m;save();T.left=T.m*60;try{navigator.vibrate([300,150,300])}catch(e){}render();sheet(`<h3>Oração concluída 🙏</h3><p class="m">Seu tempo com Deus chegou ao fim. Que a paz dele guarde o seu coração.</p><button class="btn" data-a="close">Amém</button>`)}
+function dev(){const d=devDay||(devDay=dia()),x=DEV[d]||dflt,v=V[(d-1)%V.length];
+return hdr(`Dia ${d} · ${TEMAS[Math.ceil(d/7)-1]}`)+`<div class="card hero"><h3>${x.t}</h3></div><div class="row" style="align-items:center"><button class="chip" data-a="dp">‹</button><div style="flex:1;height:6px;background:#252A2C;border-radius:4px"><div style="width:${d/168*100}%;height:6px;background:var(--l);border-radius:4px"></div></div><button class="chip" data-a="dn">›</button><button class="chip" data-a="fs">Aa</button><button class="chip" data-a="spk">${spk?'■':'▶'}</button></div>
+<div class="card"><h2>${x.t}</h2><p class="lime" style="font-family:Georgia,serif;font-style:italic;font-size:19px">${v[0]} – ${v[1]}</p>${x.tx.split('\n\n').map(p=>`<p style="font-size:${D.fs}px;line-height:1.55">${p}</p>`).join('')}
+<div class="row"><button class="chip" data-a="fav">${D.fav[d]?'♥':'♡'} Favoritar</button><button class="chip" data-a="share">Compartilhar</button></div></div>
+<div class="card"><b class="lime">🙏 Oração</b><p class="m">${x.or}</p></div><div class="card"><b class="lime">🎯 Desafio do dia</b><p class="m">${x.ds}</p></div>`}
+function diario(){const ks=Object.keys(D.e).sort().reverse().filter(k=>filt=='all'||D.e[k].s==filt);
+return hdr('Diário')+`<p class="m">Histórico completo</p><div class="row">${[['all','Todos'],['v','Vitória'],['r','Recaída']].map(f=>`<button class="chip ${filt==f[0]?'on':''}" data-a="filt" data-v="${f[0]}">${f[1]}</button>`).join('')}</div>`+
+(ks.length?ks.map(k=>{const e=D.e[k],c=e.s=='v'?'var(--g)':'var(--r)';return `<div class="ent"><small>Dia ${dd(D.start,k)+1}<br>${k.slice(8)}/${k.slice(5,7)}</small><div class="ic" style="border-color:${c};color:${c}">${e.s=='v'?'✔':'✖'}</div><div style="flex:1"><b style="color:${c}">${e.s=='v'?'Resisti':'Recaí'}</b><br><small>${esc(e.n||'Sem nota')}</small></div></div>`}).join(''):'<p class="m">Nenhum registro ainda.</p>')}
+function perfil(){const s=stats(),el=dd(D.start,today())+1,n=new Date(new Date().getFullYear(),new Date().getMonth()+cm,1),y=n.getFullYear(),mo=n.getMonth(),nd=new Date(y,mo+1,0).getDate(),off=new Date(y,mo,1).getDay();
+let cal='<div class="cal">'+'<div style="background:0"></div>'.repeat(off);
+for(let i=1;i<=nd;i++){const k=iso(new Date(y,mo,i)),e=D.e[k];cal+=`<div class="${e?e.s:''} ${k==today()?'t':''}">${i}</div>`}cal+='</div>';
+return hdr('Perfil')+`<div style="text-align:center">${D.photo?`<img src="${D.photo}" width="84" height="84" style="border-radius:50%;object-fit:cover">`:'<div style="font-size:60px">👤</div>'}<h2 style="margin:4px">${esc(D.name||'Peregrino')}</h2><small>${s.best>=90?'Vencedor em Cristo':s.best>=30?'Guerreiro da Fé':s.best>=7?'Persistente':'Caminhante'} · ${TEMAS[sem()-1]}</small></div><div class="row"><div class="stat"><small>Dias de vitória</small><b>${s.vit}</b></div><div class="stat"><small>Maior sequência</small><b>${s.best} dias</b></div><div class="stat"><small>Consistência</small><b>${Math.round(s.vit/Math.max(1,el)*100)}%</b></div></div>
+<h3>Marcos conquistados</h3><div class="row" style="justify-content:space-between">${[7,14,30,60,90].map(d=>`<div style="text-align:center"><div class="mk ${s.best>=d?'on':''}">${s.best>=d?'⭐':'🔒'}</div><small>${d} dias</small></div>`).join('')}</div>
+<div class="card"><h3>Resumo geral</h3><small>Dias registrados: ${s.tot} de 168<br>Vitórias: ${s.vit}<br>Recaídas: ${s.rec}<br>Dias em branco: ${Math.max(0,el-s.tot)}</small></div>
+<div class="row" style="justify-content:space-between;align-items:center"><button class="chip" data-a="cm" data-v="-1">‹</button><h3>${n.toLocaleString('pt-BR',{month:'long',year:'numeric'})}</h3><button class="chip" data-a="cm" data-v="1">›</button></div>${cal}
+<div class="card"><h3>Configurações</h3><small>Seu nome</small><input id="nm" value="${esc(D.name||'')}"><small>Discipulador (nome)</small><input id="dn" value="${esc(D.dn||'')}"><small>WhatsApp do discipulador (com DDD)</small><input id="ct" type="tel" inputmode="tel" placeholder="(61) 99999-9999" value="${esc(D.contact)}"><button class="btn g" style="margin-top:8px" data-a="sct">Salvar</button><button class="btn" style="margin-top:8px" data-a="rel">📨 Enviar relatório ao discipulador</button><button class="btn g" style="margin-top:8px" data-a="ph">Trocar foto de perfil</button><input id="pf" type="file" accept="image/*" hidden>
+<button class="btn g" style="margin-top:8px" data-a="pin">${D.pin?'Alterar/remover PIN':'Definir PIN de proteção'}</button><button class="btn g" style="margin-top:8px" data-a="exp">Exportar backup</button><button class="btn g" style="margin-top:8px" data-a="imp">Importar backup</button><input id="fi" type="file" accept=".json" hidden></div>
+<button class="btn g" style="border:1px solid var(--r);color:var(--r);background:0" data-a="rst">↻ Reiniciar jornada</button><p class="m" style="text-align:center">Seus dados ficam só neste aparelho.</p>`}
+function boas(){$('#nav').innerHTML='';$('#m').innerHTML='';const l=$('#lk');l.className='on';l.innerHTML=`<img src="logo.png" width="130" style="border-radius:28px"><h1 style="font-size:40px;margin:6px">Trilha</h1><p class="m2">Conheça sua jornada.<br>Supere seus limites.</p><button class="btn" style="max-width:320px;margin-top:30px" data-a="nx">Começar jornada →</button>`}
+function lock(){pk='';const l=$('#lk');l.className='on';l.innerHTML=`<img src="logo.png" width="96" style="border-radius:22px"><h2 style="margin:6px">Trilha Coração Branco</h2><p class="m2">Digite seu PIN</p><div id="dots">${'<i></i>'.repeat(6)}</div><div class="pad">${[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>`<button data-a="k" data-v="${k}">${k}</button>`).join('')}</div><a data-a="fg" style="color:#ddd">Esqueci o PIN</a>`}
+function rel(){const n=D.freq||7;sheet(`<h3>Relatório para ${esc(D.dn||'o discipulador')}</h3><div class="row">${[7,14].map(x=>`<button class="chip ${n==x?'on':''}" data-a="rf" data-v="${x}">${x==7?'Semanal':'Quinzenal'}</button>`).join('')}</div><small>O resumo do período é montado sozinho. Responda se quiser:</small><textarea id="q1" placeholder="O que foi bom neste período?"></textarea><textarea id="q2" placeholder="Qual foi o maior gatilho?"></textarea><textarea id="q3" placeholder="Em que você precisa de ajuda?"></textarea><label class="m"><input type="checkbox" id="qn" style="width:auto;margin:10px 6px 10px 0"> Incluir minhas notas do diário</label><button class="btn" data-a="gen">Gerar mensagem</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`)}
+function sos(){const n=D.contact.replace(/\D/g,''),f=n.length<=11?'55'+n:n;
+sheet(`<div style="text-align:right"><a data-a="close">✕ fechar</a></div><h2>Precisa de ajuda agora?</h2><p class="m">Você não está sozinho.</p>
+${[['1.','Pare e respire fundo','Inspire por 4s, segure 4s, expire 4s.'],['2.','Saia do ambiente','Afaste-se do que está te provocando.'],['3.','Ore com sinceridade','Fale com Deus. Ele te ouve agora.'],['4.','Fale com alguém','Envie uma mensagem para seu contato.'],['5.','Escolha o bem','Lembre-se: isso vai passar.']].map(x=>`<div class="step"><b class="lime">${x[0]}</b><div><b>${x[1]}</b><br><small>${x[2]}</small></div></div>`).join('')}
+${n?`<a href="https://wa.me/${f}?text=${encodeURIComponent('Preciso de ajuda agora. Pode conversar comigo?')}" target="_blank" rel="noopener"><button class="btn" style="margin-top:12px">Enviar mensagem no WhatsApp</button></a>`:`<button class="btn g" style="margin-top:12px" data-a="goperfil">Cadastrar contato de confiança</button>`}
+<button class="btn g" style="margin-top:8px" data-a="orar">Iniciar oração guiada</button>
+<p class="m" style="text-align:center">Em sofrimento intenso, ligue para o CVV: <a href="tel:188">188</a> (24h, gratuito).</p>`)}
+function conf(v){sheet(`<h3>Confirmar registro do dia</h3><p class="m">Tem certeza da sua escolha?</p><button class="btn ${v=='r'?'r':''}" data-a="ok" data-v="${v}">${v=='v'?'✔ RESISTI':'✖ RECAÍ'}</button><button class="btn g" style="margin-top:10px" data-a="close">Cancelar</button>`)}
+document.addEventListener('input',e=>{if(e.target.id=='nota'){const t=today();if(D.e[t]){D.e[t].n=e.target.value;save()}else draft=e.target.value;$('#cnt').textContent=e.target.value.length+'/200'}});
+document.addEventListener('change',e=>{if(e.target.id=='fi'){const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(!j.e||!j.start)throw 0;D=Object.assign(D,j);save();render();alert('Backup importado.')}catch(x){alert('Arquivo inválido.')}};r.readAsText(e.target.files[0])}});
+document.addEventListener('click',async e=>{const a=e.target.closest('[data-a]');if(!a)return;const v=a.dataset.v,t=today();
+switch(a.dataset.a){
+case'tab':tab=v;if(v=='dev')devDay=0;render();break;case'sos':sos();break;case'close':closeS();render();break;
+case'alt':alt=true;render();break;case'reg':conf(v);break;
+case'ok':D.e[t]={s:v,n:(D.e[t]&&D.e[t].n)||draft};draft='';alt=false;save();render();sheet(`<h3>Registro salvo! 🙌</h3><p class="m">${v=='v'?'Deus se alegra com sua escolha de hoje.':'Deus não desiste de você. Levante-se e continue.'}</p><p class="vs">${v=='v'?'Não nos cansemos de fazer o bem, porque a seu tempo ceifaremos.':'Perto está o Senhor dos que têm o coração quebrantado.'}</p><span class="lime">${v=='v'?'Gálatas 6:9':'Salmos 34:18'}</span><button class="btn" style="margin-top:14px" data-a="close">Continuar</button>`);break;
+case'nx':$('#lk').className='';sheet(`<h2>Vamos começar</h2><small>Seu nome</small><input id="nm"><small>Nome do seu discipulador</small><input id="dn"><small>WhatsApp do discipulador (com DDD) — usado no SOS e nos relatórios</small><input id="ct" type="tel" inputmode="tel" placeholder="(61) 99999-9999"><button class="btn" style="margin-top:14px" data-a="go">Começar jornada</button>`);break;
+case'k':{if(v=='⌫')pk=pk.slice(0,-1);else if(v!==''&&pk.length<6)pk+=v;document.querySelectorAll('#dots i').forEach((x,i)=>x.className=i<pk.length?'f':'');
+if(pk.length>=4&&await sha(pk)==D.pin){pk='';$('#lk').className='';render()}else if(pk.length==6){const dt=$('#dots');dt.classList.add('sh');setTimeout(()=>{dt.classList.remove('sh');pk='';dt.querySelectorAll('i').forEach(x=>x.className='')},350)}}break;
+case'fg':sheet(`<h3>Esqueceu o PIN?</h3><p class="m">Não há recuperação, porque os dados ficam só no seu aparelho. Se você tem um backup, apague os dados abaixo e importe o backup depois. Isso apaga o progresso deste aparelho.</p><button class="btn r" data-a="wipe">Apagar dados e recomeçar</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`);break;
+case'wipe':if(confirm('Apagar todos os dados deste aparelho?')){localStorage.removeItem(K);location.reload()}break;
+case'mood':(D.mood=D.mood||{})[t]=+v;save();render();break;
+case'cm':cm+=+v;render();break;case'ph':$('#pf').click();break;
+case'rel':rel();break;case'rf':D.freq=+v;save();rel();break;
+case'gen':{const n=D.freq||7,a=add(t,-(n-1)),st=stats(),L=[],f=k=>k.slice(8)+'/'+k.slice(5,7);let vi=0,re=0,bl=0,pm=0;
+for(let i=0;i<n;i++){const k=add(a,i);if(k<D.start)continue;const e=D.e[k];if(!e)bl++;else if(e.s=='v')vi++;else re++;pm+=D.pr[k]||0;if(e&&e.n&&$('#qn').checked)L.push('- '+f(k)+': '+e.n)}
+const q=[['O que foi bom','#q1'],['Maior gatilho','#q2'],['Preciso de ajuda com','#q3']].map(x=>[x[0],$(x[1]).value.trim()]).filter(x=>x[1]).map(x=>x[0]+': '+x[1]);
+RT=`Relatório ${n==7?'semanal':'quinzenal'} – Trilha Coração Branco\nPeríodo: ${f(a<D.start?D.start:a)} a ${f(t)}\n✔ Vitórias: ${vi}\n✖ Recaídas: ${re}\nDias sem registro: ${bl}\n🔥 Sequência atual: ${st.cur} dia(s)\n🙏 Oração: ${pm} min`+(L.length?'\n\nNotas:\n'+L.join('\n'):'')+(q.length?'\n\n'+q.join('\n'):'');
+sheet(`<h3>Revise a mensagem</h3><small>Você pode editar antes de enviar.</small><textarea id="rt" style="min-height:240px">${esc(RT)}</textarea><button class="btn" style="margin-top:8px" data-a="rw">Enviar pelo WhatsApp</button><button class="btn g" style="margin-top:8px" data-a="rs">Compartilhar</button><button class="btn g" style="margin-top:8px" data-a="rc">Copiar</button><button class="btn g" style="margin-top:8px" data-a="close">Fechar</button>`)}break;
+case'rw':{const x=D.contact.replace(/\D/g,''),y=x.length<=11?'55'+x:x;D.lastRep=t;save();window.open('https://wa.me/'+(x?y:'')+'?text='+encodeURIComponent($('#rt').value),'_blank')}break;
+case'rs':D.lastRep=t;save();try{navigator.share?await navigator.share({text:$('#rt').value}):alert('Compartilhamento não disponível.')}catch(_){}break;
+case'rc':try{await navigator.clipboard.writeText($('#rt').value);D.lastRep=t;save();alert('Mensagem copiada.')}catch(_){alert('Não foi possível copiar.')}break;
+case'trilha':tab='trilha';render();break;
+case'min':T.m=+v;T.left=T.m*60;render();break;case'play':play();break;case'pause':tick();stop();render();break;case'cancel':stop();T.left=T.m*60;render();break;
+case'orar':closeS();tab='oracao';render();break;case'goperfil':closeS();tab='perfil';render();break;
+case'dp':devDay=Math.max(1,devDay-1);render();break;case'dn':devDay=Math.min(dia(),devDay+1);render();break;
+case'fs':D.fs=D.fs>=23?16:D.fs+2;save();render();break;case'fav':D.fav[devDay]=!D.fav[devDay];save();render();break;
+case'share':{const x=DEV[devDay]||dflt,m=x.t+' – Trilha Coração Branco';try{navigator.share?await navigator.share({title:m,text:m+'\n'+x.tx}):alert('Compartilhamento não disponível.')}catch(_){}}break;
+case'spk':if(spk){speechSynthesis.cancel();spk=false}else{const x=DEV[devDay]||dflt,u=new SpeechSynthesisUtterance(x.t+'. '+x.tx);u.lang='pt-BR';u.onend=()=>{spk=false;render()};speechSynthesis.speak(u);spk=true}render();break;
+case'filt':filt=v;render();break;
+case'sct':D.name=$('#nm').value.trim();D.dn=$('#dn').value.trim();D.contact=$('#ct').value.trim();save();alert('Contato salvo.');break;
+case'go':D.start=today();D.name=$('#nm').value.trim();D.dn=$('#dn').value.trim();D.contact=$('#ct').value.trim();save();closeS();render();break;
+case'pin':sheet(`<h3>PIN de proteção</h3><small>4 a 6 números. Deixe vazio para remover.</small><input id="pn" type="password" inputmode="numeric" maxlength="6"><button class="btn" style="margin-top:12px" data-a="spin">Salvar</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`);break;
+case'spin':{const p=$('#pn').value;if(p&&!/^\d{4,6}$/.test(p))return alert('Use de 4 a 6 números.');D.pin=p?await sha(p):'';save();closeS();render()}break;
+case'unl':if(await sha($('#pn').value)==D.pin){closeS();render()}else $('#er').textContent='PIN incorreto.';break;
+case'exp':{const b=new Blob([JSON.stringify(D)],{type:'application/json'}),l=document.createElement('a');l.href=URL.createObjectURL(b);l.download='trilha-coracao-branco-backup.json';l.click()}break;
+case'imp':$('#fi').click();break;
+case'rst':sheet(`<h3>Reiniciar jornada</h3><p class="m">A contagem volta ao dia 1. Escolha o que fazer com o histórico.</p><button class="btn" data-a="rk">Reiniciar e manter histórico</button><button class="btn r" style="margin-top:8px" data-a="ra">Reiniciar e apagar tudo</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`);break;
+case'rk':D.start=today();save();closeS();tab='hoje';render();break;
+case'ra':D.start=today();D.e={};D.pr={};D.fav={};save();closeS();tab='hoje';render();break}});
+document.addEventListener('change',e=>{if(e.target.id=='pf'&&e.target.files[0]){const i=new Image();i.onload=()=>{const c=document.createElement('canvas');c.width=c.height=160;const s=Math.min(i.width,i.height);c.getContext('2d').drawImage(i,(i.width-s)/2,(i.height-s)/2,s,s,0,0,160,160);D.photo=c.toDataURL('image/jpeg',.8);save();render()};i.src=URL.createObjectURL(e.target.files[0])}});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+render();if(D.start&&D.pin)lock();
+</script></body></html>
