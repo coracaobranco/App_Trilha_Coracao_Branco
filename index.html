@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#F3F3F4"><link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFFFFF"><link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <title>Trilha Coração Branco</title>
 <style>
-:root{--bg:#050708;--c:#111416;--c2:#181B1D;--m:#A5A8AA;--l:#D7FF00;--r:#FF3030;--b:#1D2123}
+:root{--bg:#fff;--c:#F2F2F3;--t:#0B0B0C;--m:#6E7072;--l:#E4161B;--g:#22A94A;--b:#E6E6E8}
+body.dk{--bg:#0A0A0B;--c:#1B1B1D;--t:#fff;--m:#9C9EA1;--b:#2B2B2E}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;background:var(--bg);color:#fff;font-family:system-ui,-apple-system,Roboto,sans-serif}
-#app{max-width:480px;margin:0 auto;height:100%;position:relative;overflow:hidden}
-main{height:100%;overflow-y:auto;padding:calc(env(safe-area-inset-top) + 16px) 18px calc(100px + env(safe-area-inset-bottom))}
-h1{font-size:27px;line-height:1.15;margin:6px 0 10px}h2,h3{margin:8px 0}
-.lime{color:var(--l)}small,.m{color:var(--m);font-size:12px;line-height:1.5}
-a{color:var(--l);text-decoration:underline;cursor:pointer}
-.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}.brand{font-weight:700}
-.sos{background:var(--r);color:#fff;border:0;border-radius:10px;padding:8px 15px;font-weight:900}
-.row{display:flex;gap:9px;margin:10px 0}
-.stat{flex:1;background:var(--c);border-radius:13px;padding:12px;display:flex;flex-direction:column;gap:3px}.stat b{color:var(--l);font-size:17px}
-.card{background:var(--c);border:1px solid var(--b);border-radius:15px;padding:15px;margin:12px 0}
-.vs{font-size:19px;line-height:1.4;margin:8px 0}
-.btn{border:0;border-radius:13px;padding:15px;font-weight:900;font-size:15px;color:#071000;background:var(--l);width:100%;cursor:pointer}
-.btn.r{background:var(--r);color:#fff}.btn.g{background:var(--c2);color:#fff}.btn:disabled{opacity:.4}
-textarea,input{width:100%;background:var(--c);color:#fff;border:1px solid #272B2D;border-radius:12px;padding:12px;font:inherit;margin-top:8px}
-textarea{min-height:90px;resize:none}
-nav{position:absolute;left:0;right:0;bottom:0;background:#111416;border-top:1px solid #202426;display:flex;padding-bottom:env(safe-area-inset-bottom)}
-nav button{flex:1;background:0;border:0;color:#9B9EA0;padding:10px 0 8px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px}
-nav i{font-style:normal;font-size:20px;filter:grayscale(1)}nav .on{color:var(--l)}nav .on i{filter:none}
-#sheet{position:absolute;inset:0;background:rgba(0,0,0,.8);display:none;align-items:flex-end;z-index:5}#sheet.on{display:flex}
-#sheet>div{background:#101315;border-radius:24px 24px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:92%;overflow-y:auto}
-.step{background:var(--c);border-radius:10px;padding:10px;margin:4px 0;display:flex;gap:10px}
-.node{width:40px;height:40px;border-radius:50%;border:2px solid #777;display:flex;align-items:center;justify-content:center;font-weight:900;background:#171A1C;flex:none}
-.node.d{border-color:var(--l)}.node.c{border-color:#FFD000}
-.path{display:flex;gap:14px;align-items:center;padding:10px 0}
-.ent{background:var(--c);border-radius:12px;padding:12px;margin:8px 0;display:flex;gap:10px;align-items:center}
-.ic{width:32px;height:32px;border-radius:50%;border:2px solid;display:flex;align-items:center;justify-content:center;flex:none}
-.chip{background:var(--c2);padding:8px 15px;border-radius:12px;border:0;color:#fff;font-weight:700}.chip.on{background:var(--l);color:#071000}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.cal div{aspect-ratio:1;border-radius:50%;background:#222629;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--m)}
-.cal .v{background:var(--l);color:#071000}.cal .r{background:var(--r);color:#fff}.cal .t{outline:2px solid #fff}
-.mk{width:46px;height:46px;border-radius:14px;background:#292D2F;display:flex;align-items:center;justify-content:center;margin:0 auto 4px}.mk.on{background:#E8B928}
-.big{font-size:46px;font-weight:700;text-align:center}
-
-:root{--bg:#F3F3F4;--c:#fff;--c2:#ECECEE;--t:#141516;--m:#6B6F73;--l:#E11D1D;--r:#C81E1E;--b:#E2E2E5;--g:#1FA64A}
-@media(prefers-color-scheme:dark){:root{--bg:#0B0C0D;--c:#17191B;--c2:#222528;--t:#F5F5F5;--m:#A5A8AA;--b:#26292C}}
-html,body{background:var(--bg);color:var(--t)}textarea,input{color:var(--t);border-color:var(--b)}
-nav{background:var(--c);border-color:var(--b)}nav button{color:var(--m)}nav .on{color:var(--l)}
-#sheet{z-index:10}#sheet>div{background:var(--c)}
-.btn{color:#fff}.btn.ok{background:var(--g)}.btn.g{color:var(--t)}.btn small{color:#fff;opacity:.9}
-.chip{color:var(--t)}.chip.on{color:#fff}
-.node{background:var(--c2)}.node.d{border-color:var(--g)}.node.c{border-color:var(--l)}
-.cal div{background:var(--c2)}.cal .v{background:var(--g);color:#fff}.cal .r{color:#fff}.cal .t{outline-color:var(--t)}
-.mk{background:var(--c2)}.mk.on{background:#E8B928}.card{box-shadow:0 1px 3px #0001}
-.hero{background:linear-gradient(#0005,#000b),url(img/banner.jpg) center/cover,linear-gradient(135deg,#2b2b2e,#7a1414);color:#fff;min-height:96px;display:flex;flex-direction:column;justify-content:flex-end;border:0}.hero small{color:#ddd}.hero h3{margin:2px 0 0}
-#lk{position:absolute;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;background:linear-gradient(#0008,#000e),url(img/abertura.jpg) center/cover,#111;color:#fff}#lk.on{display:flex}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--t);font-family:system-ui,-apple-system,Roboto,sans-serif}
+#app{max-width:480px;margin:0 auto;height:100%;position:relative;overflow:hidden;background:var(--bg)}
+main{height:100%;overflow-y:auto;padding:calc(env(safe-area-inset-top) + 14px) 18px calc(96px + env(safe-area-inset-bottom))}
+main.nn{padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+h1{font-size:28px;margin:6px 0}h2,h3{margin:8px 0}small,.m{color:var(--m);font-size:12.5px;line-height:1.5}.m{font-size:14px}
+a{color:var(--l);cursor:pointer}.lime{color:var(--l)}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px}
+.ib{background:0;border:0;color:var(--t);padding:4px;position:relative;display:flex}.dot{position:absolute;top:2px;right:3px;width:9px;height:9px;border-radius:50%;background:var(--l)}
+.sos{background:var(--l);color:#fff;border:0;border-radius:12px;padding:9px 14px;font-weight:900;display:inline-flex;gap:6px;align-items:center}.sos.s{padding:5px 10px;font-size:12px;border-radius:9px}
+.hi{display:flex;align-items:center;justify-content:space-between}
+.blk{background:#0B0B0C;color:#fff;border-radius:18px;padding:18px;display:flex;justify-content:space-between;align-items:center;margin:6px 0 4px}.blk h2{margin:4px 0 0}
+.row{display:flex;gap:10px;margin:10px 0}
+.stat{flex:1;background:var(--c);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px}.stat b{font-size:18px}
+.card{background:var(--c);border-radius:16px;padding:15px;margin:12px 0}.card.rw{display:flex;align-items:center;gap:12px}
+.vs{font-size:18px;line-height:1.4;margin:6px 0}
+.hero{background:linear-gradient(#0004,#000c),url(img/banner.jpg) center/cover,linear-gradient(135deg,#2b2b2e,#7a1414);color:#fff;min-height:112px;display:flex;justify-content:space-between;align-items:flex-end}.hero small{color:#ddd}.hero h3{margin:2px 0 0;font-size:20px}
+.pl{width:40px;height:40px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;flex:none}
+.btn{border:0;border-radius:14px;padding:16px;font-weight:800;font-size:15px;color:#fff;background:#0B0B0C;width:100%;cursor:pointer}
+.btn.r{background:var(--l)}.btn.g{background:var(--c);color:var(--t)}.btn.o{background:0;border:1.5px solid var(--b);color:var(--t)}.btn.w{background:#fff;color:#0B0B0C}.btn small{color:#fff;opacity:.85;font-weight:400}.btn:disabled{opacity:.4}
+.chip{background:var(--c);color:var(--t);border:0;border-radius:12px;padding:9px 16px;font-weight:700}.chip.on{background:#0B0B0C;color:#fff}
+textarea,input{width:100%;background:var(--c);color:var(--t);border:1px solid var(--b);border-radius:14px;padding:13px;font:inherit;margin-top:8px}textarea{min-height:90px;resize:none}
+.fc{display:flex;justify-content:space-between}.fc button{background:0;border:0;color:var(--t);padding:2px}.fc .on{color:var(--l)}
+nav{position:absolute;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--b);display:flex;padding:6px 0 env(safe-area-inset-bottom)}
+nav button{flex:1;background:0;border:0;color:var(--m);padding:6px 0;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px}nav .on{color:var(--l);font-weight:700}
+.tr{display:flex;gap:14px;padding-bottom:20px;position:relative}.tr:before{content:'';position:absolute;left:17px;top:38px;bottom:0;width:2px;background:#3a3a3d}.tr:last-child:before{display:none}
+.nd{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;border:3px solid #fff;background:#4a4a4d;color:#fff}.nd.d{background:var(--g)}.nd.c{background:var(--l)}
+.dh{margin:calc(-14px - env(safe-area-inset-top)) -18px 0;padding:calc(14px + env(safe-area-inset-top)) 18px 46px;background:linear-gradient(#0003,#000d),url(img/banner.jpg) center/cover,linear-gradient(135deg,#2b2b2e,#7a1414)}
+.sh2{background:var(--bg);margin-top:-26px;border-radius:24px 24px 0 0;padding:6px 2px;position:relative}
+.qv{font-style:italic;font-weight:700;font-size:19px;text-align:center;line-height:1.35}.bar{border-left:3px solid var(--l);padding-left:12px;margin:16px 0}
+.ib2{width:48px;height:48px;border-radius:50%;border:0;background:var(--c);color:var(--t);display:flex;align-items:center;justify-content:center;font-weight:800}.ib2.bk{background:#0B0B0C;color:#fff;width:60px;height:60px}
+.big{font-size:46px;font-weight:800}
+.ent{background:var(--c);border-radius:14px;padding:13px;margin:9px 0;display:flex;gap:12px;align-items:center}.ic{width:32px;height:32px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.stk{position:sticky;bottom:calc(66px + env(safe-area-inset-bottom));padding:10px 0;background:linear-gradient(transparent,var(--bg) 40%)}
+.bd{width:50px;height:50px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-size:22px}.bd.on{background:linear-gradient(#F6C646,#E08A12)}
+.pb{height:8px;background:var(--c);border-radius:6px;overflow:hidden}.pb i{display:block;height:100%;background:var(--l)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.cal div{aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}.cal .h{color:var(--m)}
+.cal .v{background:var(--g);color:#fff}.cal .r{background:var(--l);color:#fff}.cal .t{outline:2px solid var(--t)}
+.step{display:flex;gap:12px;margin:12px 0}.num{width:24px;height:24px;border-radius:50%;background:var(--l);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex:none}
+.alr{width:46px;height:46px;border-radius:50%;background:var(--l);color:#fff;font-weight:900;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+#sheet{position:absolute;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;z-index:10}#sheet.on{display:flex}
+#sheet>div{--bg:#fff;--c:#F2F2F3;--t:#0B0B0C;--m:#6E7072;--b:#E6E6E8;background:#fff;color:#0B0B0C;border-radius:24px 24px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:92%;overflow-y:auto}
+#lk{position:absolute;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;background:linear-gradient(#0008,#000e),url(img/abertura.jpg) center/cover,#111;color:#fff}#lk.on{display:flex}#lk .btn{max-width:340px}
 .m2{color:#cfcfcf;margin:0}#dots{display:flex;gap:12px;margin:10px}#dots i{width:14px;height:14px;border-radius:50%;border:2px solid #fff7}#dots i.f{background:#fff}
 #dots.sh{animation:sk .3s}@keyframes sk{25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
 .pad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;margin:6px 0}.pad button{height:72px;border-radius:50%;border:0;background:#ffffff22;color:#fff;font-size:26px}.pad button:empty{visibility:hidden}
@@ -84,63 +81,78 @@ while(D.e[d]&&D.e[d].s=='v'){cur++;d=add(d,-1)}return{vit,rec,best,cur,tot:ks.le
 let RT='',cm=0,pk='',tab='hoje',draft='',alt=false,devDay=0,filt='all',spk=false;
 let T={m:10,left:600,end:0,run:false,id:0,wl:null};
 const sheet=h=>{$('#sh').innerHTML=h;$('#sheet').classList.add('on')},closeS=()=>$('#sheet').classList.remove('on');
-const TABS=[['hoje','🏠','Hoje'],['oracao','⏱️','Oração'],['dev','📖','Devocional'],['diario','📓','Diário'],['perfil','👤','Perfil']];
-function render(){if(!D.start)return boas();
-$('#nav').innerHTML=TABS.map(t=>`<button data-a="tab" data-v="${t[0]}" class="${tab==t[0]||(tab=='trilha'&&t[0]=='hoje')?'on':''}"><i>${t[1]}</i>${t[2]}</button>`).join('');
-$('#m').innerHTML=({hoje,oracao,dev,diario,perfil,trilha})[tab]();paint()}
-const hdr=t=>`<div class="top"><span class="brand">${t}</span><button class="sos" data-a="sos">SOS</button></div>`;
-function hoje(){const t=today(),en=D.e[t],st=stats(),d=dia(),w=sem(),v=V[(d-1)%V.length];
-return hdr('<img src="logo.png" width="26" style="vertical-align:middle;border-radius:7px"> Trilha')+`<h2 style="margin:0">${D.name?'Olá, '+esc(D.name)+'!':''}</h2><div class="lime">Dia ${String(d).padStart(2,'0')} de 168 · <a data-a="tab" data-v="trilha">ver trilha</a></div>
-<h1>Semana ${w}.<br><span class="lime">${TEMAS[w-1]}.</span></h1>
-<div class="row"><div class="stat"><small>🔥 Sequência atual</small><b>${st.cur} dia${st.cur==1?'':'s'}</b></div><div class="stat"><small>🏆 Melhor sequência</small><b>${st.best} dia${st.best==1?'':'s'}</b></div></div>
-<div class="card hero" data-a="tab" data-v="dev"><small>Ensinamento do dia ›</small><h3>${DEV[d]?DEV[d].t:dflt.t}</h3></div>
-<div class="card"><small>Versículo do dia</small><p class="vs">${v[0]}</p><span class="lime">${v[1]}</span></div>
-${d>1&&dd(D.lastRep||D.start,t)>=(D.freq||7)?`<div class="card"><b class="lime">📨 Hora de enviar seu relatório</b><p class="m">Compartilhe seu progresso com ${esc(D.dn||'seu discipulador')}.</p><button class="btn" data-a="rel">Enviar relatório</button></div>`:''}${en&&!alt?`<div class="card"><b class="lime">${en.s=='v'?'✔ Hoje você resistiu':'✖ Hoje você recaiu'}</b><p class="m">${en.s=='v'?'Continue firme.':'Uma queda não define a sua história. Levante-se e continue.'}</p><a data-a="alt">Alterar registro</a></div>`
-:`<div class="row"><button class="btn ok" data-a="reg" data-v="v">✔ RESISTI<br><small>Estou firme!</small></button><button class="btn r" data-a="reg" data-v="r">✖ RECAÍ<br><small>Preciso me levantar!</small></button></div>`}
-<div class="card"><small>Como foi seu dia? (opcional)</small><div class="row" style="justify-content:space-between">${['😞','😕','😐','🙂','😄'].map((x,i)=>`<button class="chip ${(D.mood||{})[t]===i?'on':''}" data-a="mood" data-v="${i}" style="font-size:20px">${x}</button>`).join('')}</div><textarea id="nota" maxlength="200" placeholder="Escreva uma nota rápida..." data-i="nota">${esc(en?en.n:draft)}</textarea><small id="cnt">${(en?en.n:draft).length}/200</small></div>`}
-function trilha(){const w=sem();return hdr('Trilha')+`<p class="m">Sua jornada de 168 dias · 24 semanas</p>`+TEMAS.map((x,i)=>`<div class="path" style="margin-left:${[0,28,56,28][i%4]}px"><div class="node ${i+1<w?'d':i+1==w?'c':''}">${i+1<w?'✔':i+1}</div><div><b>${x}</b><br><small>${i+1<w?'Concluída':i+1==w?'Semana atual':'Futura'}</small></div></div>`).join('')+`<a data-a="tab" data-v="hoje">‹ voltar</a>`}
+const I=(p,s=22)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const P={home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',trail:'<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a4 4 0 0 0 0-8H8a4 4 0 0 1 0-8h8"/>',book:'<path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',bell:'<path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/>',back:'<path d="M15 5l-7 7 7 7"/>',chev:'<path d="M9 5l7 7-7 7"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',flame:'<path d="M12 3c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z"/>',trophy:'<path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3M12 14v4M8 21h8"/>',play:'<path d="M7 4l13 8-13 8z" fill="currentColor"/>',shield:'<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M12 8v5M12 16v.5"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2 4.5 4.5 0 0 1 8 2c0 6-8 11-8 11z"/>',cal:'<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',plus:'<path d="M12 5v14M5 12h14"/>',check:'<path d="M5 12l5 5 9-10"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',vol:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6"/>',mute:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6"/>',restart:'<path d="M4 12a8 8 0 1 0 3-6L4 9"/><path d="M4 4v5h5"/>',share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8 11l8-4M8 13l8 4"/>',chart:'<path d="M5 20V10M12 20V4M19 20v-7"/>'};
+const FM=['M8 17c1-3 7-3 8 0','M8.5 16c1-1.5 6-1.5 7 0','M8.5 15.5h7','M8.5 14.5c1 1.5 6 1.5 7 0','M8 14c1 3.5 7 3.5 8 0'];
+const F=i=>`<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r=".7" fill="currentColor"/><circle cx="15" cy="10" r=".7" fill="currentColor"/><path d="${FM[i]}"/></svg>`;
+const TD=["Reconhecendo a realidade e a graça de Deus.","Identificando gatilhos, padrões e escolhas.","Quem você é não é definido pela sua queda.","Disciplina prática do olhar e da atenção.","Diferenciar convicção saudável de vergonha tóxica.","O poder de não lutar sozinho.","Substituir pensamentos, não apenas suprimi-los.","Força que vem de dentro, pelo Espírito.","Cuidados práticos para proteger o caminho.","Celebrando e firmando as conquistas.","Caminhando junto com quem te apoia.","Estratégias para o ambiente digital.","Pureza e respeito nas relações.","Receber e dar perdão.","Rotinas que sustentam a decisão.","Encontrando companhia na solidão.","Vivendo para algo maior.","Seguir firme mesmo cansado.","Reconstruindo o que foi abalado.","Coração agradecido e alegre.","Reconhecer sinais e agir cedo.","Cuidar de outros fortalece você.","Terminando bem a jornada.","Uma vida nova com propósito."];
+const NAV=[['hoje','home','Hoje'],['trilha','trail','Trilha'],['diario','book','Diário'],['perfil','user','Perfil']];
+const beep=()=>{try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=660;o.start();o.stop(a.currentTime+.5)}catch(e){}};
+let lt='';
+function render(){if(!D.start)return boas();const nv=NAV.some(x=>x[0]==tab);document.body.className=(tab=='trilha'||tab=='perfil')?'dk':'';
+const n=$('#nav');n.style.display=nv?'flex':'none';n.innerHTML=NAV.map(x=>`<button data-a="tab" data-v="${x[0]}" class="${tab==x[0]?'on':''}">${I(P[x[1]])}${x[2]}</button>`).join('');
+const m=$('#m');m.innerHTML=({hoje,oracao,dev,diario,perfil,trilha,nota,cfg})[tab]();m.className=nv?'':'nn';if(lt!=tab){m.scrollTop=0;lt=tab}paint()}
+const bk=(v='hoje')=>`<button class="ib" data-a="tab" data-v="${v}">${I(P.back)}</button>`;
+function hoje(){const t=today(),en=D.e[t],st=stats(),d=dia(),w=sem(),v=V[(d-1)%V.length],due=d>1&&dd(D.lastRep||D.start,t)>=(D.freq||7),nt=en?en.n:draft;
+return `<div class="top"><span class="brand"><img src="logo.png" width="28" height="28" style="border-radius:8px" alt=""> Trilha</span><button class="ib" data-a="rel" aria-label="Relatório">${I(P.bell)}${due?'<u class="dot"></u>':''}</button></div>
+<div class="hi"><h1>${D.name?'Olá, '+esc(D.name)+'!':'Olá!'}</h1><button class="sos" data-a="sos">${I(P.shield,16)} SOS</button></div><p class="m" style="margin:2px 0 12px">Continue firme na sua jornada.</p>
+<div class="blk" data-a="tab" data-v="trilha"><div><b>Dia ${String(d).padStart(2,'0')} de 168</b><h2>Semana ${w} ›</h2></div><svg width="56" height="56" viewBox="0 0 56 56" style="transform:rotate(-90deg)"><circle cx="28" cy="28" r="23" fill="none" stroke="#3a3a3d" stroke-width="6"/><circle cx="28" cy="28" r="23" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-dasharray="144.5" stroke-dashoffset="${144.5*(1-d/168)}"/></svg></div>
+<h3>Seu progresso</h3><div class="row"><div class="stat">${I(P.flame)}<small>Sequência atual</small><b>${st.cur} dia${st.cur==1?'':'s'}</b></div><div class="stat">${I(P.trophy)}<small>Melhor sequência</small><b>${st.best} dia${st.best==1?'':'s'}</b></div></div>
+<div class="card hero" data-a="tab" data-v="dev"><div><small>Ensinamento do dia</small><h3>${DEV[d]?DEV[d].t:dflt.t}</h3></div><span class="pl">${I(P.play,18)}</span></div>
+<div class="card"><small>Versículo do dia</small><p class="vs">${v[0]}</p><b class="lime">${v[1]}</b></div>
+${due?`<div class="card"><b>📨 Hora de enviar seu relatório</b><p class="m">Compartilhe seu progresso com ${esc(D.dn||'seu discipulador')}.</p><button class="btn" data-a="rel">Enviar relatório</button></div>`:''}
+<div class="card"><b>Como foi seu dia?</b><div class="fc" style="margin:12px 0">${[0,1,2,3,4].map(i=>`<button data-a="mood" data-v="${i}" class="${(D.mood||{})[t]===i?'on':''}" aria-label="Humor ${i+1}">${F(i)}</button>`).join('')}</div>${nt?`<p class="m">“${esc(nt)}”</p>`:''}<a data-a="tab" data-v="nota">${nt?'Editar nota':'+ Adicionar nota'}</a></div>
+${en&&!alt?`<div class="card"><b style="color:${en.s=='v'?'var(--g)':'var(--l)'}">${en.s=='v'?'✔ Hoje você resistiu':'✖ Hoje você recaiu'}</b><p class="m">${en.s=='v'?'Continue firme.':'Uma queda não define a sua história. Levante-se e continue.'}</p><a data-a="alt">Alterar registro</a></div>`:`<div class="row"><button class="btn" data-a="reg" data-v="v">✔ RESISTI<br><small>Estou firme!</small></button><button class="btn r" data-a="reg" data-v="r">✖ RECAÍ<br><small>Preciso me levantar!</small></button></div>`}
+<div class="card rw" data-a="tab" data-v="oracao"><span class="lime">${I(P.heart)}</span><div style="flex:1"><b>Tempo com foco</b><br><small>Orar agora</small></div>${I(P.chev)}</div>`}
+function trilha(){const w=sem();return `<div class="top">${bk()}<b>Trilha</b><span><button class="sos s" data-a="sos">SOS</button> <button class="ib" data-a="tab" data-v="perfil" style="display:inline-flex">${I(P.chart)}</button></span></div><h1 style="font-size:32px;margin:14px 0 0">24 Semanas</h1><p class="m" style="margin:0 0 22px">para uma nova vida</p>${TEMAS.map((x,i)=>`<div class="tr"><div class="nd ${i+1<w?'d':i+1==w?'c':''}">${i+1<w?I(P.check,18):i+1}</div><div><b>${x}</b><br><small>${TD[i]}</small></div></div>`).join('')}<button class="btn w" data-a="tab" data-v="dev">Ver detalhes da jornada</button>`}
 function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
-function oracao(){return hdr('Oração · Tempo com Deus')+`<p class="m" style="text-align:center">Escolha o tempo</p><div class="row">${[10,15,20].map(m=>`<button class="btn ${T.m==m?'':'g'}" data-a="min" data-v="${m}" ${T.run?'disabled':''}>${m} min</button>`).join('')}</div>
-<div style="position:relative;width:260px;height:260px;margin:24px auto"><svg width="260" height="260" viewBox="0 0 260 260" style="transform:rotate(-90deg)"><circle cx="130" cy="130" r="105" fill="none" stroke="#252A2C" stroke-width="14"/><circle id="rg" cx="130" cy="130" r="105" fill="none" stroke="#D7FF00" stroke-width="14" stroke-linecap="round" stroke-dasharray="660" stroke-dashoffset="0"/></svg>
-<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="big" id="tm">${fmt(T.left)}</div><small>Tempo restante</small><button class="btn g" style="width:56px;height:56px;border-radius:50%;margin-top:10px;padding:0;font-size:20px" data-a="${T.run?'pause':'play'}">${T.run?'❚❚':'▶'}</button></div></div>
-<p class="m" style="text-align:center">“Buscai o Senhor enquanto se pode achar, invocai-o enquanto está perto.”<br><span class="lime">Isaías 55:6</span></p>
-<div class="card m">🔒 Só é possível concluir quando o tempo chegar ao fim.</div><button class="btn g" data-a="cancel">✕ Cancelar</button>
-<p class="m" style="text-align:center">Total orado: ${Object.values(D.pr).reduce((a,b)=>a+b,0)} min</p>`}
+function oracao(){return `<div class="top">${bk()}<b>Oração</b><button class="ib" data-a="tab" data-v="cfg">${I(P.gear)}</button></div>
+<p class="m" style="text-align:center;margin:4px">Tempo com foco</p><div class="row" style="justify-content:center">${[10,15,20].map(m=>`<button class="chip ${T.m==m?'on':''}" data-a="min" data-v="${m}" ${T.run?'disabled':''}>${m} min</button>`).join('')}</div>
+<div style="position:relative;width:260px;height:260px;margin:18px auto"><svg width="260" height="260" viewBox="0 0 260 260" style="transform:rotate(-90deg)"><circle cx="130" cy="130" r="105" fill="none" stroke="var(--b)" stroke-width="14"/><circle id="rg" cx="130" cy="130" r="105" fill="none" stroke="#E4161B" stroke-width="14" stroke-linecap="round" stroke-dasharray="660" stroke-dashoffset="0"/></svg><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="big" id="tm">${fmt(T.left)}</div><small>Minutos</small></div></div>
+<div class="row" style="justify-content:center;align-items:center;gap:22px"><button class="ib2" data-a="cancel" aria-label="Reiniciar">${I(P.restart)}</button><button class="ib2 bk" data-a="${T.run?'pause':'play'}" aria-label="Iniciar ou pausar">${T.run?'❚❚':I(P.play,26)}</button><button class="ib2" data-a="snd" aria-label="Som">${I(D.snd===false?P.mute:P.vol)}</button></div>
+<div class="card" style="text-align:center">“Entregue seus caminhos ao Senhor, confie nele, e ele tudo fará.”<br><b class="lime">Salmos 37:5</b></div><p style="text-align:center"><b>Total de orações: ${D.pc||0}</b></p><small>🔒 A oração só conta quando o tempo chega ao fim.</small>`}
 function paint(){const a=$('#tm'),r=$('#rg');if(a)a.textContent=fmt(T.left);if(r)r.style.strokeDashoffset=660*(1-T.left/(T.m*60))}
 function tick(){if(!T.run)return;T.left=Math.max(0,Math.ceil((T.end-Date.now())/1000));paint();if(T.left<=0)fim()}
 async function play(){T.end=Date.now()+T.left*1000;T.run=true;clearInterval(T.id);T.id=setInterval(tick,250);try{T.wl=await navigator.wakeLock.request('screen')}catch(e){}render()}
 function stop(){T.run=false;clearInterval(T.id);try{T.wl&&T.wl.release()}catch(e){}}
-function fim(){stop();const t=today();D.pr[t]=(D.pr[t]||0)+T.m;save();T.left=T.m*60;try{navigator.vibrate([300,150,300])}catch(e){}render();sheet(`<h3>Oração concluída 🙏</h3><p class="m">Seu tempo com Deus chegou ao fim. Que a paz dele guarde o seu coração.</p><button class="btn" data-a="close">Amém</button>`)}
+function fim(){stop();const t=today();D.pr[t]=(D.pr[t]||0)+T.m;D.pc=(D.pc||0)+1;save();if(D.snd!==false)beep();T.left=T.m*60;try{navigator.vibrate([300,150,300])}catch(e){}render();sheet(`<h3>Oração concluída 🙏</h3><p class="m">Seu tempo com Deus chegou ao fim. Que a paz dele guarde o seu coração.</p><button class="btn" data-a="close">Amém</button>`)}
 function dev(){const d=devDay||(devDay=dia()),x=DEV[d]||dflt,v=V[(d-1)%V.length];
-return hdr(`Dia ${d} · ${TEMAS[Math.ceil(d/7)-1]}`)+`<div class="card hero"><h3>${x.t}</h3></div><div class="row" style="align-items:center"><button class="chip" data-a="dp">‹</button><div style="flex:1;height:6px;background:#252A2C;border-radius:4px"><div style="width:${d/168*100}%;height:6px;background:var(--l);border-radius:4px"></div></div><button class="chip" data-a="dn">›</button><button class="chip" data-a="fs">Aa</button><button class="chip" data-a="spk">${spk?'■':'▶'}</button></div>
-<div class="card"><h2>${x.t}</h2><p class="lime" style="font-family:Georgia,serif;font-style:italic;font-size:19px">${v[0]} – ${v[1]}</p>${x.tx.split('\n\n').map(p=>`<p style="font-size:${D.fs}px;line-height:1.55">${p}</p>`).join('')}
-<div class="row"><button class="chip" data-a="fav">${D.fav[d]?'♥':'♡'} Favoritar</button><button class="chip" data-a="share">Compartilhar</button></div></div>
-<div class="card"><b class="lime">🙏 Oração</b><p class="m">${x.or}</p></div><div class="card"><b class="lime">🎯 Desafio do dia</b><p class="m">${x.ds}</p></div>`}
+return `<div class="dh"><div class="top" style="color:#fff"><button class="ib" data-a="tab" data-v="hoje" style="color:#fff">${I(P.back)}</button><b>Devocional</b><button class="ib" data-a="fs" style="color:#fff;font-weight:800">Aa</button></div><b style="color:#fff">Dia ${d} · ${TEMAS[Math.ceil(d/7)-1]}</b></div>
+<div class="sh2"><p class="qv">“${v[0]}”<br><small>${v[1]}</small></p><h3>${x.t}</h3>${x.tx.split('\n\n').map(p=>`<p style="font-size:${D.fs}px;line-height:1.55">${p}</p>`).join('')}
+<div class="bar"><b>Oração</b><p class="m">${x.or}</p></div><div class="bar"><b>★ Desafio do dia</b><p class="m">${x.ds}</p></div>
+<div class="row" style="justify-content:center;align-items:center;gap:16px"><button class="ib2" data-a="dp" aria-label="Dia anterior">${I(P.back)}</button><button class="ib2 bk" data-a="spk" aria-label="Ouvir">${spk?'■':I(P.play,24)}</button><button class="ib2" data-a="dn" aria-label="Próximo dia">${I(P.chev)}</button></div>
+<div class="row" style="justify-content:center"><button class="chip" data-a="fav">${D.fav[d]?'♥':'♡'} Favoritar</button><button class="chip" data-a="share">Compartilhar</button></div></div>`}
 function diario(){const ks=Object.keys(D.e).sort().reverse().filter(k=>filt=='all'||D.e[k].s==filt);
-return hdr('Diário')+`<p class="m">Histórico completo</p><div class="row">${[['all','Todos'],['v','Vitória'],['r','Recaída']].map(f=>`<button class="chip ${filt==f[0]?'on':''}" data-a="filt" data-v="${f[0]}">${f[1]}</button>`).join('')}</div>`+
-(ks.length?ks.map(k=>{const e=D.e[k],c=e.s=='v'?'var(--g)':'var(--r)';return `<div class="ent"><small>Dia ${dd(D.start,k)+1}<br>${k.slice(8)}/${k.slice(5,7)}</small><div class="ic" style="border-color:${c};color:${c}">${e.s=='v'?'✔':'✖'}</div><div style="flex:1"><b style="color:${c}">${e.s=='v'?'Resisti':'Recaí'}</b><br><small>${esc(e.n||'Sem nota')}</small></div></div>`}).join(''):'<p class="m">Nenhum registro ainda.</p>')}
+return `<div class="top"><b style="font-size:22px">Diário</b><span><button class="sos s" data-a="sos">SOS</button> <button class="ib" data-a="tab" data-v="perfil" style="display:inline-flex">${I(P.cal)}</button></span></div><div class="row">${[['all','Todos'],['v','Vitória'],['r','Recaída']].map(f=>`<button class="chip ${filt==f[0]?'on':''}" data-a="filt" data-v="${f[0]}">${f[1]}</button>`).join('')}</div>`+
+(ks.length?ks.map(k=>{const e=D.e[k],ok=e.s=='v',c=ok?'var(--g)':'var(--l)';return `<div class="ent" data-a="ent" data-v="${k}"><div class="ic" style="background:${c}">${I(ok?P.check:P.x,16)}</div><div style="flex:1;min-width:0"><b style="color:${c}">${k.slice(8)}/${k.slice(5,7)}/${k.slice(0,4)} – ${ok?'Vitória':'Recaída'}</b><br><small>${esc((e.n||'Sem nota').slice(0,90))}</small></div>${I(P.chev,18)}</div>`}).join(''):'<p class="m">Nenhum registro ainda.</p>')+
+`<div class="stk"><button class="btn" data-a="tab" data-v="nota">Nova anotação ${I(P.plus,16)}</button></div>`}
+function nota(){const t=today(),nt=D.e[t]?D.e[t].n:draft;return `<div class="top">${bk()}<b>Nova anotação</b><span style="width:30px"></span></div><h3 style="margin:22px 0 8px;font-size:20px">Como foi seu dia? O que aconteceu?</h3><textarea id="nota" maxlength="300" placeholder="Escreva sua nota..." style="min-height:200px">${esc(nt)}</textarea><small id="cnt">${nt.length}/300</small><button class="btn" style="margin-top:16px" data-a="tab" data-v="hoje">Salvar registro ${I(P.check,16)}</button>`}
 function perfil(){const s=stats(),el=dd(D.start,today())+1,n=new Date(new Date().getFullYear(),new Date().getMonth()+cm,1),y=n.getFullYear(),mo=n.getMonth(),nd=new Date(y,mo+1,0).getDate(),off=new Date(y,mo,1).getDay();
-let cal='<div class="cal">'+'<div style="background:0"></div>'.repeat(off);
+let cal='<div class="cal">'+['D','S','T','Q','Q','S','S'].map(x=>`<div class="h">${x}</div>`).join('')+'<div></div>'.repeat(off);
 for(let i=1;i<=nd;i++){const k=iso(new Date(y,mo,i)),e=D.e[k];cal+=`<div class="${e?e.s:''} ${k==today()?'t':''}">${i}</div>`}cal+='</div>';
-return hdr('Perfil')+`<div style="text-align:center">${D.photo?`<img src="${D.photo}" width="84" height="84" style="border-radius:50%;object-fit:cover">`:'<div style="font-size:60px">👤</div>'}<h2 style="margin:4px">${esc(D.name||'Peregrino')}</h2><small>${s.best>=90?'Vencedor em Cristo':s.best>=30?'Guerreiro da Fé':s.best>=7?'Persistente':'Caminhante'} · ${TEMAS[sem()-1]}</small></div><div class="row"><div class="stat"><small>Dias de vitória</small><b>${s.vit}</b></div><div class="stat"><small>Maior sequência</small><b>${s.best} dias</b></div><div class="stat"><small>Consistência</small><b>${Math.round(s.vit/Math.max(1,el)*100)}%</b></div></div>
-<h3>Marcos conquistados</h3><div class="row" style="justify-content:space-between">${[7,14,30,60,90].map(d=>`<div style="text-align:center"><div class="mk ${s.best>=d?'on':''}">${s.best>=d?'⭐':'🔒'}</div><small>${d} dias</small></div>`).join('')}</div>
-<div class="card"><h3>Resumo geral</h3><small>Dias registrados: ${s.tot} de 168<br>Vitórias: ${s.vit}<br>Recaídas: ${s.rec}<br>Dias em branco: ${Math.max(0,el-s.tot)}</small></div>
-<div class="row" style="justify-content:space-between;align-items:center"><button class="chip" data-a="cm" data-v="-1">‹</button><h3>${n.toLocaleString('pt-BR',{month:'long',year:'numeric'})}</h3><button class="chip" data-a="cm" data-v="1">›</button></div>${cal}
-<div class="card"><h3>Configurações</h3><small>Seu nome</small><input id="nm" value="${esc(D.name||'')}"><small>Discipulador (nome)</small><input id="dn" value="${esc(D.dn||'')}"><small>WhatsApp do discipulador (com DDD)</small><input id="ct" type="tel" inputmode="tel" placeholder="(61) 99999-9999" value="${esc(D.contact)}"><button class="btn g" style="margin-top:8px" data-a="sct">Salvar</button><button class="btn" style="margin-top:8px" data-a="rel">📨 Enviar relatório ao discipulador</button><button class="btn g" style="margin-top:8px" data-a="ph">Trocar foto de perfil</button><input id="pf" type="file" accept="image/*" hidden>
-<button class="btn g" style="margin-top:8px" data-a="pin">${D.pin?'Alterar/remover PIN':'Definir PIN de proteção'}</button><button class="btn g" style="margin-top:8px" data-a="exp">Exportar backup</button><button class="btn g" style="margin-top:8px" data-a="imp">Importar backup</button><input id="fi" type="file" accept=".json" hidden></div>
-<button class="btn g" style="border:1px solid var(--r);color:var(--r);background:0" data-a="rst">↻ Reiniciar jornada</button><p class="m" style="text-align:center">Seus dados ficam só neste aparelho.</p>`}
-function boas(){$('#nav').innerHTML='';$('#m').innerHTML='';const l=$('#lk');l.className='on';l.innerHTML=`<img src="logo.png" width="130" style="border-radius:28px"><h1 style="font-size:40px;margin:6px">Trilha</h1><p class="m2">Conheça sua jornada.<br>Supere seus limites.</p><button class="btn" style="max-width:320px;margin-top:30px" data-a="nx">Começar jornada →</button>`}
+return `<div class="top"><b style="font-size:22px">Perfil</b><span><button class="sos s" data-a="sos">SOS</button> <button class="ib" data-a="tab" data-v="cfg" style="display:inline-flex">${I(P.gear)}</button></span></div>
+<div style="text-align:center">${D.photo?`<img src="${D.photo}" width="84" height="84" style="border-radius:50%;object-fit:cover" alt="">`:`<div class="bd" style="width:84px;height:84px">${I(P.user,38)}</div>`}<h2 style="margin:6px 0 0">${s.best>=90?'Vencedor em Cristo':s.best>=30?'Guerreiro da Fé':s.best>=7?'Persistente':'Caminhante'}</h2><small>${esc(D.name||'')} ${D.name?'· ':''}${TEMAS[sem()-1]}</small></div>
+<div class="row" style="justify-content:space-between;margin-top:18px">${[7,14,30,60,90].map((d,i)=>`<div style="text-align:center"><div class="bd ${s.best>=d?'on':''}">${s.best>=d?['⭐','⭐','🏆','⭐','👑'][i]:'🔒'}</div><small>${d} dias</small></div>`).join('')}</div>
+<div class="row" style="justify-content:space-between;margin-bottom:6px"><b>Seu progresso</b><b>${s.tot} / 168</b></div><div class="pb"><i style="width:${s.tot/168*100}%"></i></div>
+<div class="row" style="justify-content:space-between;align-items:center;margin-top:22px"><button class="ib" data-a="cm" data-v="-1">${I(P.back,18)}</button><b>${n.toLocaleString('pt-BR',{month:'long',year:'numeric'})}</b><button class="ib" data-a="cm" data-v="1">${I(P.chev,18)}</button></div>${cal}
+<div class="row"><div class="stat"><small>Dias de vitória</small><b>${s.vit}</b></div><div class="stat"><small>Maior sequência</small><b>${s.best} dias</b></div><div class="stat"><small>Consistência</small><b>${Math.round(s.vit/Math.max(1,el)*100)}%</b></div></div>
+<div class="card"><b>Resumo geral</b><br><small>Dias registrados: ${s.tot} de 168<br>Vitórias: ${s.vit} · Recaídas: ${s.rec}<br>Dias em branco: ${Math.max(0,el-s.tot)}</small></div>
+<button class="btn w" data-a="rel">📨 Enviar relatório ao discipulador</button>`}
+function cfg(){return `<div class="top">${bk('perfil')}<b>Configurações</b><span style="width:30px"></span></div><small>Seu nome</small><input id="nm" value="${esc(D.name||'')}"><small>Discipulador (nome)</small><input id="dn" value="${esc(D.dn||'')}"><small>WhatsApp do discipulador (com DDD)</small><input id="ct" type="tel" inputmode="tel" placeholder="(61) 99999-9999" value="${esc(D.contact)}"><button class="btn" style="margin-top:12px" data-a="sct">Salvar</button>
+<button class="btn g" style="margin-top:8px" data-a="rel">📨 Enviar relatório ao discipulador</button><button class="btn g" style="margin-top:8px" data-a="ph">Trocar foto de perfil</button><input id="pf" type="file" accept="image/*" hidden>
+<button class="btn g" style="margin-top:8px" data-a="pin">${D.pin?'Alterar/remover PIN':'Definir PIN de proteção'}</button><button class="btn g" style="margin-top:8px" data-a="exp">Exportar backup</button><button class="btn g" style="margin-top:8px" data-a="imp">Importar backup</button><input id="fi" type="file" accept=".json" hidden>
+<button class="btn o" style="margin-top:16px;color:var(--l)" data-a="rst">↻ Reiniciar jornada</button><p class="m" style="text-align:center">Seus dados ficam só neste aparelho.</p>`}
+function boas(){$('#nav').style.display='none';$('#m').innerHTML='';const l=$('#lk');l.className='on';l.innerHTML=`<img src="logo.png" width="120" style="border-radius:26px" alt=""><h1 style="font-size:42px;margin:8px 0 0">Trilha</h1><p class="m2">Conheça sua jornada.<br>Supere seus limites.</p><div style="height:48px"></div><button class="btn r" data-a="nx">Começar jornada →</button><a data-a="imp" style="color:#ddd;margin-top:10px">Já tenho backup? Importar</a><input id="fi" type="file" accept=".json" hidden>`}
 function lock(){pk='';const l=$('#lk');l.className='on';l.innerHTML=`<img src="logo.png" width="96" style="border-radius:22px"><h2 style="margin:6px">Trilha Coração Branco</h2><p class="m2">Digite seu PIN</p><div id="dots">${'<i></i>'.repeat(6)}</div><div class="pad">${[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>`<button data-a="k" data-v="${k}">${k}</button>`).join('')}</div><a data-a="fg" style="color:#ddd">Esqueci o PIN</a>`}
 function rel(){const n=D.freq||7;sheet(`<h3>Relatório para ${esc(D.dn||'o discipulador')}</h3><div class="row">${[7,14].map(x=>`<button class="chip ${n==x?'on':''}" data-a="rf" data-v="${x}">${x==7?'Semanal':'Quinzenal'}</button>`).join('')}</div><small>O resumo do período é montado sozinho. Responda se quiser:</small><textarea id="q1" placeholder="O que foi bom neste período?"></textarea><textarea id="q2" placeholder="Qual foi o maior gatilho?"></textarea><textarea id="q3" placeholder="Em que você precisa de ajuda?"></textarea><label class="m"><input type="checkbox" id="qn" style="width:auto;margin:10px 6px 10px 0"> Incluir minhas notas do diário</label><button class="btn" data-a="gen">Gerar mensagem</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`)}
 function sos(){const n=D.contact.replace(/\D/g,''),f=n.length<=11?'55'+n:n;
-sheet(`<div style="text-align:right"><a data-a="close">✕ fechar</a></div><h2>Precisa de ajuda agora?</h2><p class="m">Você não está sozinho.</p>
-${[['1.','Pare e respire fundo','Inspire por 4s, segure 4s, expire 4s.'],['2.','Saia do ambiente','Afaste-se do que está te provocando.'],['3.','Ore com sinceridade','Fale com Deus. Ele te ouve agora.'],['4.','Fale com alguém','Envie uma mensagem para seu contato.'],['5.','Escolha o bem','Lembre-se: isso vai passar.']].map(x=>`<div class="step"><b class="lime">${x[0]}</b><div><b>${x[1]}</b><br><small>${x[2]}</small></div></div>`).join('')}
-${n?`<a href="https://wa.me/${f}?text=${encodeURIComponent('Preciso de ajuda agora. Pode conversar comigo?')}" target="_blank" rel="noopener"><button class="btn" style="margin-top:12px">Enviar mensagem no WhatsApp</button></a>`:`<button class="btn g" style="margin-top:12px" data-a="goperfil">Cadastrar contato de confiança</button>`}
-<button class="btn g" style="margin-top:8px" data-a="orar">Iniciar oração guiada</button>
-<p class="m" style="text-align:center">Em sofrimento intenso, ligue para o CVV: <a href="tel:188">188</a> (24h, gratuito).</p>`)}
+sheet(`<div style="text-align:right"><button class="ib" data-a="close" style="margin-left:auto" aria-label="Fechar">${I(P.x)}</button></div><div style="text-align:center"><div class="alr">!</div><h2>Precisa de ajuda agora?</h2><p class="m">Você não está sozinho.</p></div>
+${[['Pare e respire fundo','Inspire por 4s, segure 4s, expire 4s.'],['Saia do ambiente','Afaste-se do que está te provocando.'],['Ore com sinceridade','Fale com Deus. Ele te ouve agora.'],['Fale com alguém','Envie uma mensagem para seu contato.'],['Escolha o bem','Lembre-se: isso vai passar.']].map((x,i)=>`<div class="step"><span class="num">${i+1}</span><div><b>${x[0]}</b><br><small>${x[1]}</small></div></div>`).join('')}
+${n?`<a href="https://wa.me/${f}?text=${encodeURIComponent('Preciso de ajuda agora. Pode conversar comigo?')}" target="_blank" rel="noopener"><button class="btn r" style="margin-top:10px">Enviar mensagem no WhatsApp</button></a>`:`<button class="btn r" style="margin-top:10px" data-a="goperfil">Cadastrar contato do discipulador</button>`}
+<button class="btn o" style="margin-top:8px" data-a="orar">Iniciar oração guiada</button><p class="m" style="text-align:center">☎ CVV <a href="tel:188">188</a> – Apoio emocional 24h</p>`)}
 function conf(v){sheet(`<h3>Confirmar registro do dia</h3><p class="m">Tem certeza da sua escolha?</p><button class="btn ${v=='r'?'r':''}" data-a="ok" data-v="${v}">${v=='v'?'✔ RESISTI':'✖ RECAÍ'}</button><button class="btn g" style="margin-top:10px" data-a="close">Cancelar</button>`)}
-document.addEventListener('input',e=>{if(e.target.id=='nota'){const t=today();if(D.e[t]){D.e[t].n=e.target.value;save()}else draft=e.target.value;$('#cnt').textContent=e.target.value.length+'/200'}});
-document.addEventListener('change',e=>{if(e.target.id=='fi'){const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(!j.e||!j.start)throw 0;D=Object.assign(D,j);save();render();alert('Backup importado.')}catch(x){alert('Arquivo inválido.')}};r.readAsText(e.target.files[0])}});
+document.addEventListener('input',e=>{if(e.target.id=='nota'){const t=today();if(D.e[t]){D.e[t].n=e.target.value;save()}else draft=e.target.value;$('#cnt').textContent=e.target.value.length+'/300'}});
+document.addEventListener('change',e=>{if(e.target.id=='fi'){const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(!j.e||!j.start)throw 0;D=Object.assign(D,j);save();$('#lk').className='';render();alert('Backup importado.')}catch(x){alert('Arquivo inválido.')}};r.readAsText(e.target.files[0])}});
 document.addEventListener('click',async e=>{const a=e.target.closest('[data-a]');if(!a)return;const v=a.dataset.v,t=today();
 switch(a.dataset.a){
 case'tab':tab=v;if(v=='dev')devDay=0;render();break;case'sos':sos();break;case'close':closeS();render();break;
@@ -162,9 +174,11 @@ sheet(`<h3>Revise a mensagem</h3><small>Você pode editar antes de enviar.</smal
 case'rw':{const x=D.contact.replace(/\D/g,''),y=x.length<=11?'55'+x:x;D.lastRep=t;save();window.open('https://wa.me/'+(x?y:'')+'?text='+encodeURIComponent($('#rt').value),'_blank')}break;
 case'rs':D.lastRep=t;save();try{navigator.share?await navigator.share({text:$('#rt').value}):alert('Compartilhamento não disponível.')}catch(_){}break;
 case'rc':try{await navigator.clipboard.writeText($('#rt').value);D.lastRep=t;save();alert('Mensagem copiada.')}catch(_){alert('Não foi possível copiar.')}break;
+case'snd':D.snd=D.snd===false;save();render();break;
+case'ent':{const e=D.e[v],ok=e.s=='v';sheet(`<h3>${v.slice(8)}/${v.slice(5,7)}/${v.slice(0,4)} – ${ok?'Vitória':'Recaída'}</h3><p class="m">${esc(e.n||'Sem nota')}</p><button class="btn" data-a="close">Fechar</button>`)}break;
 case'trilha':tab='trilha';render();break;
 case'min':T.m=+v;T.left=T.m*60;render();break;case'play':play();break;case'pause':tick();stop();render();break;case'cancel':stop();T.left=T.m*60;render();break;
-case'orar':closeS();tab='oracao';render();break;case'goperfil':closeS();tab='perfil';render();break;
+case'orar':closeS();tab='oracao';render();break;case'goperfil':closeS();tab='cfg';render();break;
 case'dp':devDay=Math.max(1,devDay-1);render();break;case'dn':devDay=Math.min(dia(),devDay+1);render();break;
 case'fs':D.fs=D.fs>=23?16:D.fs+2;save();render();break;case'fav':D.fav[devDay]=!D.fav[devDay];save();render();break;
 case'share':{const x=DEV[devDay]||dflt,m=x.t+' – Trilha Coração Branco';try{navigator.share?await navigator.share({title:m,text:m+'\n'+x.tx}):alert('Compartilhamento não disponível.')}catch(_){}}break;
