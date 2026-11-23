@@ -116,7 +116,7 @@ function fim(){stop();const t=today();D.pr[t]=(D.pr[t]||0)+T.m;D.pc=(D.pc||0)+1;
 function dev(){const d=devDay||(devDay=dia()),x=DEV[d]||dflt,v=V[(d-1)%V.length],pd=(D.pd||{})[d]||{},ps=D.sp||1;if(AU.dataset.d!=d)lAu(d);
 const au=x.au&&!AU.err,tx=x.tx?x.tx.split('\n\n').map(p=>`<p style="font-size:${D.fs}px;line-height:1.55">${p}</p>`).join(''):'';
 return `<div class="dh"><div class="top" style="color:#fff"><button class="ib" data-a="tab" data-v="hoje" style="color:#fff">${I(P.back)}</button><b>Devocional</b><button class="ib" data-a="fs" style="color:#fff;font-weight:800">Aa</button></div><b style="color:#fff">Dia ${d} · ${TEMAS[Math.ceil(d/7)-1]}</b></div>
-<div class="sh2">${au?`<div class="blk" style="display:block"><small style="color:#ccc">Áudio do dia${pd.ou?' · ✔ ouvido':''}</small><div class="row" style="align-items:center;margin:8px 0 0"><button class="ib2 bk" id="apb" style="background:#fff;color:#000" data-a="ap" aria-label="Ouvir ou pausar">${AU.paused?I(P.play,24):'❚❚'}</button><div style="flex:1"><input type="range" id="sk" min="0" max="${AU.duration||0}" value="${AU.currentTime||0}" step="1" style="margin:0;padding:0;border:0;background:0"><small id="tt" style="color:#ccc">${fmt(Math.floor(AU.currentTime||0))} / ${fmt(Math.floor(AU.duration||0))}</small></div><button class="chip" data-a="asp">${ps}x</button></div></div>`:x.au?`<div class="card m">Áudio em breve.${x.tx?' <a data-a="spk">Ouvir com a voz do celular</a>':''}</div>`:''}
+<div class="sh2">${au?`<div class="blk" style="display:block"><small style="color:#ccc">Áudio do dia${pd.ou?' · ✔ ouvido':''}</small><div class="row" style="align-items:center;margin:8px 0 0"><button class="ib2 bk" id="apb" style="background:#fff;color:#000" data-a="ap" aria-label="Ouvir ou pausar">${AU.paused?I(P.play,24):'❚❚'}</button><div style="flex:1"><input type="range" id="sk" min="0" max="${AU.duration||0}" value="${AU.currentTime||0}" step="1" style="margin:0;padding:0;border:0;background:0"><small id="tt" style="color:#ccc">${fmt(Math.floor(AU.currentTime||0))} / ${fmt(Math.floor(AU.duration||0))}</small></div><button class="chip" data-a="asp">${ps}x</button></div></div>`:x.au?`<div class="card m"><b>Áudio indisponível agora.</b><br>${AU.msg||'Verificando o arquivo...'}<br><a data-a="rtry">Tentar de novo</a>${x.tx?' · <a data-a="spk">Ouvir com a voz do celular</a>':''}</div>`:''}
 <h2>${x.t}</h2>${x.lit?`<small>📖 Leitura: ${x.lit}</small>`:''}
 ${x.pn?`<div class="bar"><b>🧠 Pense nisto</b><p class="m">${x.pn}</p></div>`:`<p class="qv">“${v[0]}”<br><small>${v[1]}</small></p>`}
 ${x.at?`<h3>Atividades</h3>${x.at.map((a,i)=>`<label class="ck"><input type="checkbox" data-c="${i}" ${(pd.c||[])[i]?'checked':''}><span>${a}</span></label>`).join('')}`:''}
@@ -179,6 +179,7 @@ case'rs':D.lastRep=t;save();try{navigator.share?await navigator.share({text:$('#
 case'rc':try{await navigator.clipboard.writeText($('#rt').value);D.lastRep=t;save();alert('Mensagem copiada.')}catch(_){alert('Não foi possível copiar.')}break;
 case'snd':D.snd=D.snd===false;save();render();break;
 case'ent':{const e=D.e[v],ok=e.s=='v';sheet(`<h3>${v.slice(8)}/${v.slice(5,7)}/${v.slice(0,4)} – ${ok?'Vitória':'Recaída'}</h3><p class="m">${esc(e.n||'Sem nota')}</p><button class="btn" data-a="close">Fechar</button>`)}break;
+case'rtry':lAu(devDay);render();break;
 case'ap':if(AU.paused)AU.play().catch(()=>{});else AU.pause();break;
 case'asp':D.sp=D.sp==1?1.25:D.sp==1.25?1.5:1;AU.playbackRate=D.sp;save();render();break;
 case'cd':{const p=pdd();p.ok=1;p.dt=t;save();render();sheet(`<h3>Dia ${devDay} concluído 🙌</h3><p class="m">Agora registre, na tela Hoje, como foi o seu dia.</p><button class="btn" data-a="close">Continuar</button>`)}break;
@@ -202,12 +203,13 @@ case'rk':D.start=today();save();closeS();tab='hoje';render();break;
 case'ra':D.start=today();D.e={};D.pr={};D.fav={};save();closeS();tab='hoje';render();break}});
 document.addEventListener('change',e=>{if(e.target.id=='pf'&&e.target.files[0]){const i=new Image();i.onload=()=>{const c=document.createElement('canvas');c.width=c.height=160;const s=Math.min(i.width,i.height);c.getContext('2d').drawImage(i,(i.width-s)/2,(i.height-s)/2,s,s,0,0,160,160);D.photo=c.toDataURL('image/jpeg',.8);save();render()};i.src=URL.createObjectURL(e.target.files[0])}});
 const AU=new Audio();AU.preload='metadata';
-function lAu(d){AU.pause();AU.err=false;AU.dataset.d=d;const x=DEV[d];if(x&&x.au){AU.src='audio/'+x.au;AU.playbackRate=D.sp||1}else AU.removeAttribute('src')}
+function lAu(d){AU.pause();AU.err=false;AU.msg='';AU.tr=0;AU.dataset.d=d;const x=DEV[d];if(x&&x.au){AU.src='audio/'+x.au;AU.playbackRate=D.sp||1}else AU.removeAttribute('src')}
 AU.onloadedmetadata=()=>{const p=(D.ap||{})[AU.dataset.d];if(p&&p<AU.duration-3)AU.currentTime=p;if(tab=='dev')render()};
 AU.ontimeupdate=()=>{const s=$('#sk'),tt=$('#tt');if(s){s.max=AU.duration||0;s.value=AU.currentTime}if(tt)tt.textContent=fmt(Math.floor(AU.currentTime))+' / '+fmt(Math.floor(AU.duration||0));const d=AU.dataset.d;if(d&&Math.floor(AU.currentTime)%5==0){(D.ap=D.ap||{})[d]=Math.floor(AU.currentTime);save()}};
 AU.onplay=AU.onpause=()=>{const b=$('#apb');if(b)b.innerHTML=AU.paused?I(P.play,24):'❚❚'};
 AU.onended=()=>{const d=AU.dataset.d;((D.pd=D.pd||{})[d]=D.pd[d]||{}).ou=1;(D.ap=D.ap||{})[d]=0;save();if(tab=='dev')render()};
-AU.onerror=()=>{if(AU.getAttribute('src')){AU.err=true;if(tab=='dev')render()}};
+AU.onerror=()=>{if(!AU.getAttribute('src'))return;const x=DEV[AU.dataset.d]||{};if(!AU.tr&&x.au){AU.tr=1;AU.src=x.au;return}AU.err=true;if(tab=='dev')render();
+fetch(AU.src,{method:'HEAD',cache:'no-store'}).then(r=>{AU.msg=r.ok?'O arquivo existe, mas o celular não conseguiu tocar. Confira se é um mp3 de verdade, e não outro formato com o nome trocado.':'Arquivo não encontrado ('+r.status+'): audio/'+x.au+'. Confira o nome e a pasta no GitHub.'}).catch(()=>{AU.msg='Sem conexão para verificar o arquivo.'}).then(()=>{if(tab=='dev')render()})};
 const pdd=()=>((D.pd=D.pd||{})[devDay]=D.pd[devDay]||{});
 document.addEventListener('input',e=>{const t=e.target;if(t.id=='sk')AU.currentTime=+t.value;if(t.dataset&&t.dataset.q!==undefined){const p=pdd();(p.r=p.r||[])[+t.dataset.q]=t.value;save()}});
 document.addEventListener('change',e=>{const t=e.target;if(t.dataset&&t.dataset.c!==undefined){const p=pdd();(p.c=p.c||[])[+t.dataset.c]=t.checked;save()}});
