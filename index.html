@@ -1,35 +1,218 @@
-/* CONTEÚDO DOS DEVOCIONAIS (1 a 168). Cada dia é um bloco "número": {...}.
-   Campos: t=título, lit=leitura, au=arquivo de áudio (pasta audio/), pn=pense nisto,
-   at=[atividades], q=[perguntas], ds=desafio, or=oração, tx=texto do áudio (\n\n separa parágrafos).
-   Use aspas curvas “ ” dentro dos textos e vírgula entre os dias. */
-window.CONTEUDO={
- "1": {
-  "t": "Compromisso com você mesmo",
-  "lit": "Daniel 1:8 · João 8:32",
-  "au": "dia-001.mp3",
-  "pn": "A culpa dói, mas não decide nada. Só a decisão sustenta.",
-  "at": [
-   "Pegue um papel e escreva uma frase de compromisso. Exemplo: “Eu decido hoje caminhar em liberdade, porque eu valho esta luta.”",
-   "Deixe a frase em um lugar visível para você."
-  ],
-  "q": [
-   "O que me trouxe até aqui?",
-   "O que eu mais quero recuperar?"
-  ],
-  "ds": "Hoje à noite, leia em voz alta a sua frase de compromisso.",
-  "or": "Pai, eu estou aqui, sem máscara. Ensina-me a ser verdadeiro comigo, contigo e com quem caminha comigo. Dá-me firmeza para decidir e coragem para levantar. Em nome de Jesus. Amém.",
-  "tx": "Seja bem-vindo à Trilha Coração Branco.\n\nAntes de tudo: parabéns.\n\nParabéns por ter tido coragem. Muita gente passa anos fingindo que está tudo bem. Você escolheu parar de fingir. E isso já é o começo da liberdade.\n\nHoje é o dia um. Semana um: Compromisso Verdadeiro. E o tema de hoje é: compromisso com você mesmo.\n\nVou ser direto, porque você merece a verdade. A primeira pessoa com quem você precisa se comprometer não é o seu pastor, nem o seu discipulador, nem a sua família. É você. Quem mente para si mesmo não cumpre promessa para ninguém.\n\nEu sei do que estou falando, porque já estive onde você está. Já prometi que seria a última vez. Já me escondi. Já me odiei. E já voltei. Sabe por quê? Porque eu confundia culpa com compromisso. A culpa dói, mas não decide nada. A emoção passa. Só a decisão sustenta.\n\nA Bíblia conta que Daniel propôs no coração não se contaminar. Repare: ele decidiu antes de a tentação chegar. Ele não esperou ficar forte na hora. Já sabia quem ia ser.\n\nAgora, uma verdade que incomoda: ninguém vai lutar por você. Deus está com você, e o seu discipulador pode caminhar ao seu lado, mas levantar todos os dias é decisão sua. Isso se chama responsabilidade. E responsabilidade não é peso, é dignidade. É te tratar como alguém capaz de vencer.\n\nPorque isto não é só sobre um comportamento. É sobre o lugar onde você mora por dentro. Quando o coração é libertado, o de fora muda: os seus relacionamentos, a sua paz, o seu olhar. Jesus disse: conhecereis a verdade, e a verdade vos libertará.\n\nA verdade de hoje é esta: você não está aqui para ser perfeito. Está aqui para ser verdadeiro. Se cair, levante, conte a verdade e continue. Mas não use a graça como desculpa para ficar no chão.\n\nAgora é com você. Pegue um papel e escreva uma frase de compromisso. Algo como: eu decido hoje caminhar em liberdade, porque eu valho esta luta. Depois, responda: o que me trouxe até aqui? E o que eu mais quero recuperar?\n\nVamos orar.\n\nPai, eu estou aqui, sem máscara. Ensina-me a ser verdadeiro comigo, contigo e com quem caminha comigo. Dá-me firmeza para decidir e coragem para levantar. Em nome de Jesus. Amém.\n\nVamos juntos. Até amanhã."
- },
- "2": {
-  "t": "Conhecendo o ciclo",
-  "tx": "Quase toda queda tem um caminho antes dela: um gatilho, um pensamento, uma pequena escolha. Quando você enxerga o ciclo, deixa de ser pego de surpresa.\n\nO objetivo não é ter medo, e sim se antecipar.",
-  "or": "Senhor, abre os meus olhos para os sinais antes da queda. Dá-me sabedoria para sair cedo. Amém.",
-  "ds": "Anote 3 situações, horários ou lugares que costumam preceder a tentação."
- },
- "3": {
-  "t": "Colocando a fé em ação",
-  "tx": "A fé é mais do que sentimentos guardados no coração: ela molda atitudes e decisões.\n\nColocar a fé em ação é permitir que aquilo em que você crê defina o que você faz hoje, nas pequenas escolhas.",
-  "or": "Pai, ajuda-me a caminhar na verdade e a depender da Tua graça todos os dias. Amém.",
-  "ds": "Identifique um gatilho e anote uma estratégia concreta para evitá-lo."
- }
-};
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#FFFFFF"><link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<title>Trilha Coração Branco</title>
+<style>
+:root{--bg:#fff;--c:#F2F2F3;--t:#0B0B0C;--m:#6E7072;--l:#E4161B;--g:#22A94A;--b:#E6E6E8}
+body.dk{--bg:#0A0A0B;--c:#1B1B1D;--t:#fff;--m:#9C9EA1;--b:#2B2B2E}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--t);font-family:system-ui,-apple-system,Roboto,sans-serif}
+#app{max-width:480px;margin:0 auto;height:100%;position:relative;overflow:hidden;background:var(--bg)}
+main{height:100%;overflow-y:auto;padding:calc(env(safe-area-inset-top) + 14px) 18px calc(96px + env(safe-area-inset-bottom))}
+main.nn{padding-bottom:calc(30px + env(safe-area-inset-bottom))}
+h1{font-size:28px;margin:6px 0}h2,h3{margin:8px 0}small,.m{color:var(--m);font-size:12.5px;line-height:1.5}.m{font-size:14px}
+a{color:var(--l);cursor:pointer}.lime{color:var(--l)}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:19px}
+.ib{background:0;border:0;color:var(--t);padding:4px;position:relative;display:flex}.dot{position:absolute;top:2px;right:3px;width:9px;height:9px;border-radius:50%;background:var(--l)}
+.sos{background:var(--l);color:#fff;border:0;border-radius:12px;padding:9px 14px;font-weight:900;display:inline-flex;gap:6px;align-items:center}.sos.s{padding:5px 10px;font-size:12px;border-radius:9px}
+.hi{display:flex;align-items:center;justify-content:space-between}
+.blk{background:#0B0B0C;color:#fff;border-radius:18px;padding:18px;display:flex;justify-content:space-between;align-items:center;margin:6px 0 4px}.blk h2{margin:4px 0 0}
+.row{display:flex;gap:10px;margin:10px 0}
+.stat{flex:1;background:var(--c);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px}.stat b{font-size:18px}
+.card{background:var(--c);border-radius:16px;padding:15px;margin:12px 0}.card.rw{display:flex;align-items:center;gap:12px}
+.vs{font-size:18px;line-height:1.4;margin:6px 0}
+.hero{background:linear-gradient(#0004,#000c),url(img/banner.jpg) center/cover,linear-gradient(135deg,#2b2b2e,#7a1414);color:#fff;min-height:112px;display:flex;justify-content:space-between;align-items:flex-end}.hero small{color:#ddd}.hero h3{margin:2px 0 0;font-size:20px}
+.pl{width:40px;height:40px;border-radius:50%;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;flex:none}
+.btn{border:0;border-radius:14px;padding:16px;font-weight:800;font-size:15px;color:#fff;background:#0B0B0C;width:100%;cursor:pointer}
+.btn.r{background:var(--l)}.btn.g{background:var(--c);color:var(--t)}.btn.o{background:0;border:1.5px solid var(--b);color:var(--t)}.btn.w{background:#fff;color:#0B0B0C}.btn small{color:#fff;opacity:.85;font-weight:400}.btn:disabled{opacity:.4}
+.chip{background:var(--c);color:var(--t);border:0;border-radius:12px;padding:9px 16px;font-weight:700}.chip.on{background:#0B0B0C;color:#fff}
+textarea,input{width:100%;background:var(--c);color:var(--t);border:1px solid var(--b);border-radius:14px;padding:13px;font:inherit;margin-top:8px}textarea{min-height:90px;resize:none}
+.fc{display:flex;justify-content:space-between}.fc button{background:0;border:0;color:var(--t);padding:2px}.fc .on{color:var(--l)}
+nav{position:absolute;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--b);display:flex;padding:6px 0 env(safe-area-inset-bottom)}
+nav button{flex:1;background:0;border:0;color:var(--m);padding:6px 0;font-size:11px;display:flex;flex-direction:column;align-items:center;gap:3px}nav .on{color:var(--l);font-weight:700}
+.tr{display:flex;gap:14px;padding-bottom:20px;position:relative}.tr:before{content:'';position:absolute;left:17px;top:38px;bottom:0;width:2px;background:#3a3a3d}.tr:last-child:before{display:none}
+.nd{width:36px;height:36px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;border:3px solid #fff;background:#4a4a4d;color:#fff}.nd.d{background:var(--g)}.nd.c{background:var(--l)}
+.dh{margin:calc(-14px - env(safe-area-inset-top)) -18px 0;padding:calc(14px + env(safe-area-inset-top)) 18px 46px;background:linear-gradient(#0003,#000d),url(img/banner.jpg) center/cover,linear-gradient(135deg,#2b2b2e,#7a1414)}
+.sh2{background:var(--bg);margin-top:-26px;border-radius:24px 24px 0 0;padding:6px 2px;position:relative}
+.qv{font-style:italic;font-weight:700;font-size:19px;text-align:center;line-height:1.35}.bar{border-left:3px solid var(--l);padding-left:12px;margin:16px 0}
+.ib2{width:48px;height:48px;border-radius:50%;border:0;background:var(--c);color:var(--t);display:flex;align-items:center;justify-content:center;font-weight:800}.ib2.bk{background:#0B0B0C;color:#fff;width:60px;height:60px}
+.big{font-size:46px;font-weight:800}
+.ent{background:var(--c);border-radius:14px;padding:13px;margin:9px 0;display:flex;gap:12px;align-items:center}.ic{width:32px;height:32px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.stk{position:sticky;bottom:calc(66px + env(safe-area-inset-bottom));padding:10px 0;background:linear-gradient(transparent,var(--bg) 40%)}
+.bd{width:50px;height:50px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;margin:0 auto 4px;font-size:22px}.bd.on{background:linear-gradient(#F6C646,#E08A12)}
+.pb{height:8px;background:var(--c);border-radius:6px;overflow:hidden}.pb i{display:block;height:100%;background:var(--l)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.cal div{aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px}.cal .h{color:var(--m)}
+.cal .v{background:var(--g);color:#fff}.cal .r{background:var(--l);color:#fff}.cal .t{outline:2px solid var(--t)}
+.step{display:flex;gap:12px;margin:12px 0}.num{width:24px;height:24px;border-radius:50%;background:var(--l);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex:none}
+.alr{width:46px;height:46px;border-radius:50%;background:var(--l);color:#fff;font-weight:900;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+#sheet{position:absolute;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-end;z-index:10}#sheet.on{display:flex}
+#sheet>div{--bg:#fff;--c:#F2F2F3;--t:#0B0B0C;--m:#6E7072;--b:#E6E6E8;background:#fff;color:#0B0B0C;border-radius:24px 24px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:92%;overflow-y:auto}
+#lk{position:absolute;inset:0;z-index:9;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:24px;background:linear-gradient(#0008,#000e),url(img/abertura.jpg) center/cover,#111;color:#fff}#lk.on{display:flex}#lk .btn{max-width:340px}
+.m2{color:#cfcfcf;margin:0}#dots{display:flex;gap:12px;margin:10px}#dots i{width:14px;height:14px;border-radius:50%;border:2px solid #fff7}#dots i.f{background:#fff}
+#dots.sh{animation:sk .3s}@keyframes sk{25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
+.pad{display:grid;grid-template-columns:repeat(3,72px);gap:12px;margin:6px 0}.pad button{height:72px;border-radius:50%;border:0;background:#ffffff22;color:#fff;font-size:26px}.pad button:empty{visibility:hidden}
+.ck{display:flex;gap:10px;align-items:flex-start;background:var(--c);border-radius:12px;padding:12px;margin:8px 0;font-size:15px;line-height:1.45}.ck input{width:20px;height:20px;padding:0;margin:2px 0 0;flex:none;accent-color:#E4161B}input[type=range]{accent-color:#E4161B}details{margin:10px 0}summary{color:var(--l);font-weight:700;cursor:pointer}.ib2:disabled{opacity:.3}</style></head><body><div id="app"><main id="m"></main>
+<div id="lk"></div><nav id="nav"></nav><div id="sheet"><div id="sh"></div></div></div>
+<script src="conteudo.js"></script>
+<script>
+const $=s=>document.querySelector(s),K='cb1';
+const V=[["Cria em mim, ó Deus, um coração puro e renova em mim um espírito reto.","Salmos 51:10"],["Guardei no meu coração as tuas palavras, para não pecar contra ti.","Salmos 119:11"],["Fiel é Deus, que não vos deixará tentar acima do que podeis.","1 Coríntios 10:13"],["Perto está o Senhor dos que têm o coração quebrantado.","Salmos 34:18"],["Guarda o teu coração, porque dele procedem as saídas da vida.","Provérbios 4:23"],["Agora nenhuma condenação há para os que estão em Cristo Jesus.","Romanos 8:1"],["Não nos cansemos de fazer o bem, porque a seu tempo ceifaremos.","Gálatas 6:9"]];
+const TEMAS=["Compromisso Verdadeiro","Entendendo o Ciclo do Pecado","Identidade em Cristo","Guardando os Olhos e o Coração","A Raiz da Vergonha","Vulnerabilidade e Confissão","Renovando a Mente","Domínio Próprio como Fruto do Espírito","Reconstruindo Limites","Vitória Contra o Pecado","Aliados e Comunidade","Gatilhos Digitais","Pureza nos Relacionamentos","Perdão e Graça","Hábitos que Sustentam","Enfrentando a Solidão","Propósito além da Luta","Perseverança","Restaurando a Confiança","Alegria e Gratidão","Prevenindo Recaídas","Servindo aos Outros","Firmes até o Fim","Nova Identidade e Propósito"];
+const DEV=window.CONTEUDO||{};
+const dflt={t:"Reflexão do dia",tx:"O devocional deste dia ainda não foi escrito. Medite no versículo acima, ore com sinceridade e registre como foi o seu dia.",or:"Senhor, guia os meus passos hoje e fortalece a minha decisão. Amém.",ds:"Pense em uma atitude prática que sustente a sua decisão hoje."};
+let D=Object.assign({start:null,e:{},contact:'',pin:'',pr:{},fav:{},fs:17},JSON.parse(localStorage.getItem(K)||'{}'));
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(D))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const add=(s,n)=>{const x=new Date(s+'T00:00');x.setDate(x.getDate()+n);return iso(x)};
+const today=()=>iso(new Date()),dd=(a,b)=>Math.round((new Date(b+'T00:00')-new Date(a+'T00:00'))/864e5);
+const dia=()=>Math.min(168,Math.max(1,dd(D.start,today())+1)),sem=()=>Math.ceil(dia()/7);
+const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode('cb'+s)))].map(x=>x.toString(16).padStart(2,'0')).join('');
+function stats(){const ks=Object.keys(D.e).sort();let vit=0,rec=0,best=0,run=0,p=null;
+for(const k of ks){if(D.e[k].s=='v'){vit++;run=(p&&add(p,1)==k&&D.e[p].s=='v')?run+1:1;best=Math.max(best,run)}else{rec++;run=0}p=k}
+let cur=0,d=today();if(!(D.e[d]&&D.e[d].s=='v'))d=add(d,-1);
+while(D.e[d]&&D.e[d].s=='v'){cur++;d=add(d,-1)}return{vit,rec,best,cur,tot:ks.length}}
+let RT='',cm=0,pk='',tab='hoje',draft='',alt=false,devDay=0,filt='all',spk=false;
+let T={m:10,left:600,end:0,run:false,id:0,wl:null};
+const sheet=h=>{$('#sh').innerHTML=h;$('#sheet').classList.add('on')},closeS=()=>$('#sheet').classList.remove('on');
+const I=(p,s=22)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const P={home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>',trail:'<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a4 4 0 0 0 0-8H8a4 4 0 0 1 0-8h8"/>',book:'<path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>',bell:'<path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/>',back:'<path d="M15 5l-7 7 7 7"/>',chev:'<path d="M9 5l7 7-7 7"/>',gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',flame:'<path d="M12 3c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z"/>',trophy:'<path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3M12 14v4M8 21h8"/>',play:'<path d="M7 4l13 8-13 8z" fill="currentColor"/>',shield:'<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M12 8v5M12 16v.5"/>',heart:'<path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2 4.5 4.5 0 0 1 8 2c0 6-8 11-8 11z"/>',cal:'<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',plus:'<path d="M12 5v14M5 12h14"/>',check:'<path d="M5 12l5 5 9-10"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',vol:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9a4 4 0 0 1 0 6"/>',mute:'<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l4 6M21 9l-4 6"/>',restart:'<path d="M4 12a8 8 0 1 0 3-6L4 9"/><path d="M4 4v5h5"/>',share:'<circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8 11l8-4M8 13l8 4"/>',chart:'<path d="M5 20V10M12 20V4M19 20v-7"/>'};
+const FM=['M8 17c1-3 7-3 8 0','M8.5 16c1-1.5 6-1.5 7 0','M8.5 15.5h7','M8.5 14.5c1 1.5 6 1.5 7 0','M8 14c1 3.5 7 3.5 8 0'];
+const F=i=>`<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r=".7" fill="currentColor"/><circle cx="15" cy="10" r=".7" fill="currentColor"/><path d="${FM[i]}"/></svg>`;
+const TD=["Reconhecendo a realidade e a graça de Deus.","Identificando gatilhos, padrões e escolhas.","Quem você é não é definido pela sua queda.","Disciplina prática do olhar e da atenção.","Diferenciar convicção saudável de vergonha tóxica.","O poder de não lutar sozinho.","Substituir pensamentos, não apenas suprimi-los.","Força que vem de dentro, pelo Espírito.","Cuidados práticos para proteger o caminho.","Celebrando e firmando as conquistas.","Caminhando junto com quem te apoia.","Estratégias para o ambiente digital.","Pureza e respeito nas relações.","Receber e dar perdão.","Rotinas que sustentam a decisão.","Encontrando companhia na solidão.","Vivendo para algo maior.","Seguir firme mesmo cansado.","Reconstruindo o que foi abalado.","Coração agradecido e alegre.","Reconhecer sinais e agir cedo.","Cuidar de outros fortalece você.","Terminando bem a jornada.","Uma vida nova com propósito."];
+const NAV=[['hoje','home','Hoje'],['trilha','trail','Trilha'],['diario','book','Diário'],['perfil','user','Perfil']];
+const beep=()=>{try{const a=new AudioContext(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=660;o.start();o.stop(a.currentTime+.5)}catch(e){}};
+let lt='';
+function render(){if(!D.start)return boas();if(tab!='dev'&&!AU.paused)AU.pause();const nv=NAV.some(x=>x[0]==tab);document.body.className=(tab=='trilha'||tab=='perfil')?'dk':'';
+const n=$('#nav');n.style.display=nv?'flex':'none';n.innerHTML=NAV.map(x=>`<button data-a="tab" data-v="${x[0]}" class="${tab==x[0]?'on':''}">${I(P[x[1]])}${x[2]}</button>`).join('');
+const m=$('#m');m.innerHTML=({hoje,oracao,dev,diario,perfil,trilha,nota,cfg})[tab]();m.className=nv?'':'nn';if(lt!=tab){m.scrollTop=0;lt=tab}paint()}
+const bk=(v='hoje')=>`<button class="ib" data-a="tab" data-v="${v}">${I(P.back)}</button>`;
+function hoje(){const t=today(),en=D.e[t],st=stats(),d=dia(),w=sem(),v=V[(d-1)%V.length],due=d>1&&dd(D.lastRep||D.start,t)>=(D.freq||7),nt=en?en.n:draft;
+return `<div class="top"><span class="brand"><img src="logo.png" width="28" height="28" style="border-radius:8px" alt=""> Trilha</span><button class="ib" data-a="rel" aria-label="Relatório">${I(P.bell)}${due?'<u class="dot"></u>':''}</button></div>
+<div class="hi"><h1>${D.name?'Olá, '+esc(D.name)+'!':'Olá!'}</h1><button class="sos" data-a="sos">${I(P.shield,16)} SOS</button></div><p class="m" style="margin:2px 0 12px">Continue firme na sua jornada.</p>
+<div class="blk" data-a="tab" data-v="trilha"><div><b>Dia ${String(d).padStart(2,'0')} de 168</b><h2>Semana ${w} ›</h2></div><svg width="56" height="56" viewBox="0 0 56 56" style="transform:rotate(-90deg)"><circle cx="28" cy="28" r="23" fill="none" stroke="#3a3a3d" stroke-width="6"/><circle cx="28" cy="28" r="23" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-dasharray="144.5" stroke-dashoffset="${144.5*(1-d/168)}"/></svg></div>
+<h3>Seu progresso</h3><div class="row"><div class="stat">${I(P.flame)}<small>Sequência atual</small><b>${st.cur} dia${st.cur==1?'':'s'}</b></div><div class="stat">${I(P.trophy)}<small>Melhor sequência</small><b>${st.best} dia${st.best==1?'':'s'}</b></div></div>
+<div class="card hero" data-a="tab" data-v="dev"><div><small>Ensinamento do dia</small><h3>${DEV[d]?DEV[d].t:dflt.t}</h3></div><span class="pl">${I(P.play,18)}</span></div>
+<div class="card"><small>Versículo do dia</small><p class="vs">${v[0]}</p><b class="lime">${v[1]}</b></div>
+${due?`<div class="card"><b>📨 Hora de enviar seu relatório</b><p class="m">Compartilhe seu progresso com ${esc(D.dn||'seu discipulador')}.</p><button class="btn" data-a="rel">Enviar relatório</button></div>`:''}
+<div class="card"><b>Como foi seu dia?</b><div class="fc" style="margin:12px 0">${[0,1,2,3,4].map(i=>`<button data-a="mood" data-v="${i}" class="${(D.mood||{})[t]===i?'on':''}" aria-label="Humor ${i+1}">${F(i)}</button>`).join('')}</div>${nt?`<p class="m">“${esc(nt)}”</p>`:''}<a data-a="tab" data-v="nota">${nt?'Editar nota':'+ Adicionar nota'}</a></div>
+${en&&!alt?`<div class="card"><b style="color:${en.s=='v'?'var(--g)':'var(--l)'}">${en.s=='v'?'✔ Hoje você resistiu':'✖ Hoje você recaiu'}</b><p class="m">${en.s=='v'?'Continue firme.':'Uma queda não define a sua história. Levante-se e continue.'}</p><a data-a="alt">Alterar registro</a></div>`:`<div class="row"><button class="btn" data-a="reg" data-v="v">✔ RESISTI<br><small>Estou firme!</small></button><button class="btn r" data-a="reg" data-v="r">✖ RECAÍ<br><small>Preciso me levantar!</small></button></div>`}
+<div class="card rw" data-a="tab" data-v="oracao"><span class="lime">${I(P.heart)}</span><div style="flex:1"><b>Tempo com foco</b><br><small>Orar agora</small></div>${I(P.chev)}</div>`}
+function trilha(){const w=sem();return `<div class="top">${bk()}<b>Trilha</b><span><button class="sos s" data-a="sos">SOS</button> <button class="ib" data-a="tab" data-v="perfil" style="display:inline-flex">${I(P.chart)}</button></span></div><h1 style="font-size:32px;margin:14px 0 0">24 Semanas</h1><p class="m" style="margin:0 0 22px">para uma nova vida</p>${TEMAS.map((x,i)=>`<div class="tr"><div class="nd ${i+1<w?'d':i+1==w?'c':''}">${i+1<w?I(P.check,18):i+1}</div><div><b>${x}</b><br><small>${TD[i]}</small></div></div>`).join('')}<button class="btn w" data-a="tab" data-v="dev">Ver detalhes da jornada</button>`}
+function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+function oracao(){return `<div class="top">${bk()}<b>Oração</b><button class="ib" data-a="tab" data-v="cfg">${I(P.gear)}</button></div>
+<p class="m" style="text-align:center;margin:4px">Tempo com foco</p><div class="row" style="justify-content:center">${[10,15,20].map(m=>`<button class="chip ${T.m==m?'on':''}" data-a="min" data-v="${m}" ${T.run?'disabled':''}>${m} min</button>`).join('')}</div>
+<div style="position:relative;width:260px;height:260px;margin:18px auto"><svg width="260" height="260" viewBox="0 0 260 260" style="transform:rotate(-90deg)"><circle cx="130" cy="130" r="105" fill="none" stroke="var(--b)" stroke-width="14"/><circle id="rg" cx="130" cy="130" r="105" fill="none" stroke="#E4161B" stroke-width="14" stroke-linecap="round" stroke-dasharray="660" stroke-dashoffset="0"/></svg><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><div class="big" id="tm">${fmt(T.left)}</div><small>Minutos</small></div></div>
+<div class="row" style="justify-content:center;align-items:center;gap:22px"><button class="ib2" data-a="cancel" aria-label="Reiniciar">${I(P.restart)}</button><button class="ib2 bk" data-a="${T.run?'pause':'play'}" aria-label="Iniciar ou pausar">${T.run?'❚❚':I(P.play,26)}</button><button class="ib2" data-a="snd" aria-label="Som">${I(D.snd===false?P.mute:P.vol)}</button></div>
+<div class="card" style="text-align:center">“Entregue seus caminhos ao Senhor, confie nele, e ele tudo fará.”<br><b class="lime">Salmos 37:5</b></div><p style="text-align:center"><b>Total de orações: ${D.pc||0}</b></p><small>🔒 A oração só conta quando o tempo chega ao fim.</small>`}
+function paint(){const a=$('#tm'),r=$('#rg');if(a)a.textContent=fmt(T.left);if(r)r.style.strokeDashoffset=660*(1-T.left/(T.m*60))}
+function tick(){if(!T.run)return;T.left=Math.max(0,Math.ceil((T.end-Date.now())/1000));paint();if(T.left<=0)fim()}
+async function play(){T.end=Date.now()+T.left*1000;T.run=true;clearInterval(T.id);T.id=setInterval(tick,250);try{T.wl=await navigator.wakeLock.request('screen')}catch(e){}render()}
+function stop(){T.run=false;clearInterval(T.id);try{T.wl&&T.wl.release()}catch(e){}}
+function fim(){stop();const t=today();D.pr[t]=(D.pr[t]||0)+T.m;D.pc=(D.pc||0)+1;save();if(D.snd!==false)beep();T.left=T.m*60;try{navigator.vibrate([300,150,300])}catch(e){}render();sheet(`<h3>Oração concluída 🙏</h3><p class="m">Seu tempo com Deus chegou ao fim. Que a paz dele guarde o seu coração.</p><button class="btn" data-a="close">Amém</button>`)}
+function dev(){const d=devDay||(devDay=dia()),x=DEV[d]||dflt,v=V[(d-1)%V.length],pd=(D.pd||{})[d]||{},ps=D.sp||1;if(AU.dataset.d!=d)lAu(d);
+const au=x.au&&!AU.err,tx=x.tx?x.tx.split('\n\n').map(p=>`<p style="font-size:${D.fs}px;line-height:1.55">${p}</p>`).join(''):'';
+return `<div class="dh"><div class="top" style="color:#fff"><button class="ib" data-a="tab" data-v="hoje" style="color:#fff">${I(P.back)}</button><b>Devocional</b><button class="ib" data-a="fs" style="color:#fff;font-weight:800">Aa</button></div><b style="color:#fff">Dia ${d} · ${TEMAS[Math.ceil(d/7)-1]}</b></div>
+<div class="sh2">${au?`<div class="blk" style="display:block"><small style="color:#ccc">Áudio do dia${pd.ou?' · ✔ ouvido':''}</small><div class="row" style="align-items:center;margin:8px 0 0"><button class="ib2 bk" id="apb" style="background:#fff;color:#000" data-a="ap" aria-label="Ouvir ou pausar">${AU.paused?I(P.play,24):'❚❚'}</button><div style="flex:1"><input type="range" id="sk" min="0" max="${AU.duration||0}" value="${AU.currentTime||0}" step="1" style="margin:0;padding:0;border:0;background:0"><small id="tt" style="color:#ccc">${fmt(Math.floor(AU.currentTime||0))} / ${fmt(Math.floor(AU.duration||0))}</small></div><button class="chip" data-a="asp">${ps}x</button></div></div>`:x.au?`<div class="card m"><b>Áudio indisponível agora.</b><br>${AU.msg||'Verificando o arquivo...'}<br><a data-a="rtry">Tentar de novo</a>${x.tx?' · <a data-a="spk">Ouvir com a voz do celular</a>':''}</div>`:''}
+<h2>${x.t}</h2>${x.lit?`<small>📖 Leitura: ${x.lit}</small>`:''}
+${x.pn?`<div class="bar"><b>🧠 Pense nisto</b><p class="m">${x.pn}</p></div>`:`<p class="qv">“${v[0]}”<br><small>${v[1]}</small></p>`}
+${x.at?`<h3>Atividades</h3>${x.at.map((a,i)=>`<label class="ck"><input type="checkbox" data-c="${i}" ${(pd.c||[])[i]?'checked':''}><span>${a}</span></label>`).join('')}`:''}
+${x.q?`<h3>Perguntas</h3>${x.q.map((q,i)=>`<b style="font-size:15px">${q}</b><textarea data-q="${i}" placeholder="Sua resposta (fica só no seu aparelho)">${esc((pd.r||[])[i]||'')}</textarea>`).join('')}`:''}
+${x.ds?`<div class="bar"><b>★ Desafio do dia</b><p class="m">${x.ds}</p></div>`:''}${x.or?`<div class="bar"><b>🙏 Oração</b><p class="m">${x.or}</p></div>`:''}
+${tx?(x.au?`<details><summary>Ler o texto do áudio</summary>${tx}</details>`:tx):''}
+${pd.ok?'<div class="card"><b style="color:var(--g)">✔ Dia concluído</b></div>':`<button class="btn" data-a="cd">Concluir o dia ${d}</button>`}
+<div class="row" style="justify-content:center;align-items:center;gap:16px"><button class="ib2" data-a="dp" aria-label="Dia anterior" ${d<=1?'disabled':''}>${I(P.back)}</button><button class="chip" data-a="fav">${D.fav[d]?'♥':'♡'} Favoritar</button><button class="chip" data-a="share">Compartilhar</button><button class="ib2" data-a="dn" aria-label="Próximo dia" ${d>=dia()?'disabled':''}>${I(P.chev)}</button></div>${d>=dia()&&d<168?'<p class="m" style="text-align:center">O próximo ensinamento será liberado amanhã.</p>':''}</div>`}
+function diario(){const ks=Object.keys(D.e).sort().reverse().filter(k=>filt=='all'||D.e[k].s==filt);
+return `<div class="top"><b style="font-size:22px">Diário</b><span><button class="sos s" data-a="sos">SOS</button> <button class="ib" data-a="tab" data-v="perfil" style="display:inline-flex">${I(P.cal)}</button></span></div><div class="row">${[['all','Todos'],['v','Vitória'],['r','Recaída']].map(f=>`<button class="chip ${filt==f[0]?'on':''}" data-a="filt" data-v="${f[0]}">${f[1]}</button>`).join('')}</div>`+
+(ks.length?ks.map(k=>{const e=D.e[k],ok=e.s=='v',c=ok?'var(--g)':'var(--l)';return `<div class="ent" data-a="ent" data-v="${k}"><div class="ic" style="background:${c}">${I(ok?P.check:P.x,16)}</div><div style="flex:1;min-width:0"><b style="color:${c}">${k.slice(8)}/${k.slice(5,7)}/${k.slice(0,4)} – ${ok?'Vitória':'Recaída'}</b><br><small>${esc((e.n||'Sem nota').slice(0,90))}</small></div>${I(P.chev,18)}</div>`}).join(''):'<p class="m">Nenhum registro ainda.</p>')+
+`<div class="stk"><button class="btn" data-a="tab" data-v="nota">Nova anotação ${I(P.plus,16)}</button></div>`}
+function nota(){const t=today(),nt=D.e[t]?D.e[t].n:draft;return `<div class="top">${bk()}<b>Nova anotação</b><span style="width:30px"></span></div><h3 style="margin:22px 0 8px;font-size:20px">Como foi seu dia? O que aconteceu?</h3><textarea id="nota" maxlength="300" placeholder="Escreva sua nota..." style="min-height:200px">${esc(nt)}</textarea><small id="cnt">${nt.length}/300</small><button class="btn" style="margin-top:16px" data-a="tab" data-v="hoje">Salvar registro ${I(P.check,16)}</button>`}
+function perfil(){const s=stats(),el=dd(D.start,today())+1,n=new Date(new Date().getFullYear(),new Date().getMonth()+cm,1),y=n.getFullYear(),mo=n.getMonth(),nd=new Date(y,mo+1,0).getDate(),off=new Date(y,mo,1).getDay();
+let cal='<div class="cal">'+['D','S','T','Q','Q','S','S'].map(x=>`<div class="h">${x}</div>`).join('')+'<div></div>'.repeat(off);
+for(let i=1;i<=nd;i++){const k=iso(new Date(y,mo,i)),e=D.e[k];cal+=`<div class="${e?e.s:''} ${k==today()?'t':''}">${i}</div>`}cal+='</div>';
+return `<div class="top"><b style="font-size:22px">Perfil</b><span><button class="sos s" data-a="sos">SOS</button> <button class="ib" data-a="tab" data-v="cfg" style="display:inline-flex">${I(P.gear)}</button></span></div>
+<div style="text-align:center">${D.photo?`<img src="${D.photo}" width="84" height="84" style="border-radius:50%;object-fit:cover" alt="">`:`<div class="bd" style="width:84px;height:84px">${I(P.user,38)}</div>`}<h2 style="margin:6px 0 0">${s.best>=90?'Vencedor em Cristo':s.best>=30?'Guerreiro da Fé':s.best>=7?'Persistente':'Caminhante'}</h2><small>${esc(D.name||'')} ${D.name?'· ':''}${TEMAS[sem()-1]}</small></div>
+<div class="row" style="justify-content:space-between;margin-top:18px">${[7,14,30,60,90].map((d,i)=>`<div style="text-align:center"><div class="bd ${s.best>=d?'on':''}">${s.best>=d?['⭐','⭐','🏆','⭐','👑'][i]:'🔒'}</div><small>${d} dias</small></div>`).join('')}</div>
+<div class="row" style="justify-content:space-between;margin-bottom:6px"><b>Seu progresso</b><b>${s.tot} / 168</b></div><div class="pb"><i style="width:${s.tot/168*100}%"></i></div>
+<div class="row" style="justify-content:space-between;align-items:center;margin-top:22px"><button class="ib" data-a="cm" data-v="-1">${I(P.back,18)}</button><b>${n.toLocaleString('pt-BR',{month:'long',year:'numeric'})}</b><button class="ib" data-a="cm" data-v="1">${I(P.chev,18)}</button></div>${cal}
+<div class="row"><div class="stat"><small>Dias de vitória</small><b>${s.vit}</b></div><div class="stat"><small>Maior sequência</small><b>${s.best} dias</b></div><div class="stat"><small>Consistência</small><b>${Math.round(s.vit/Math.max(1,el)*100)}%</b></div></div>
+<div class="card"><b>Resumo geral</b><br><small>Dias registrados: ${s.tot} de 168<br>Vitórias: ${s.vit} · Recaídas: ${s.rec}<br>Dias em branco: ${Math.max(0,el-s.tot)}</small></div>
+<button class="btn w" data-a="rel">📨 Enviar relatório ao discipulador</button>`}
+function cfg(){return `<div class="top">${bk('perfil')}<b>Configurações</b><span style="width:30px"></span></div><small>Seu nome</small><input id="nm" value="${esc(D.name||'')}"><small>Discipulador (nome)</small><input id="dn" value="${esc(D.dn||'')}"><small>WhatsApp do discipulador (com DDD)</small><input id="ct" type="tel" inputmode="tel" placeholder="(61) 99999-9999" value="${esc(D.contact)}"><button class="btn" style="margin-top:12px" data-a="sct">Salvar</button>
+<button class="btn g" style="margin-top:8px" data-a="rel">📨 Enviar relatório ao discipulador</button><button class="btn g" style="margin-top:8px" data-a="ph">Trocar foto de perfil</button><input id="pf" type="file" accept="image/*" hidden>
+<button class="btn g" style="margin-top:8px" data-a="pin">${D.pin?'Alterar/remover PIN':'Definir PIN de proteção'}</button><button class="btn g" style="margin-top:8px" data-a="exp">Exportar backup</button><button class="btn g" style="margin-top:8px" data-a="imp">Importar backup</button><input id="fi" type="file" accept=".json" hidden>
+<button class="btn o" style="margin-top:16px;color:var(--l)" data-a="rst">↻ Reiniciar jornada</button><p class="m" style="text-align:center">Seus dados ficam só neste aparelho.</p>`}
+function boas(){$('#nav').style.display='none';$('#m').innerHTML='';const l=$('#lk');l.className='on';l.innerHTML=`<img src="logo.png" width="120" style="border-radius:26px" alt=""><h1 style="font-size:42px;margin:8px 0 0">Trilha</h1><p class="m2">Conheça sua jornada.<br>Supere seus limites.</p><div style="height:48px"></div><button class="btn r" data-a="nx">Começar jornada →</button><a data-a="imp" style="color:#ddd;margin-top:10px">Já tenho backup? Importar</a><input id="fi" type="file" accept=".json" hidden>`}
+function lock(){pk='';const l=$('#lk');l.className='on';l.innerHTML=`<img src="logo.png" width="96" style="border-radius:22px"><h2 style="margin:6px">Trilha Coração Branco</h2><p class="m2">Digite seu PIN</p><div id="dots">${'<i></i>'.repeat(6)}</div><div class="pad">${[1,2,3,4,5,6,7,8,9,'',0,'⌫'].map(k=>`<button data-a="k" data-v="${k}">${k}</button>`).join('')}</div><a data-a="fg" style="color:#ddd">Esqueci o PIN</a>`}
+function rel(){const n=D.freq||7;sheet(`<h3>Relatório para ${esc(D.dn||'o discipulador')}</h3><div class="row">${[7,14].map(x=>`<button class="chip ${n==x?'on':''}" data-a="rf" data-v="${x}">${x==7?'Semanal':'Quinzenal'}</button>`).join('')}</div><small>O resumo do período é montado sozinho. Responda se quiser:</small><textarea id="q1" placeholder="O que foi bom neste período?"></textarea><textarea id="q2" placeholder="Qual foi o maior gatilho?"></textarea><textarea id="q3" placeholder="Em que você precisa de ajuda?"></textarea><label class="m"><input type="checkbox" id="qn" style="width:auto;margin:10px 6px 10px 0"> Incluir minhas notas e respostas</label><button class="btn" data-a="gen">Gerar mensagem</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`)}
+function sos(){const n=D.contact.replace(/\D/g,''),f=n.length<=11?'55'+n:n;
+sheet(`<div style="text-align:right"><button class="ib" data-a="close" style="margin-left:auto" aria-label="Fechar">${I(P.x)}</button></div><div style="text-align:center"><div class="alr">!</div><h2>Precisa de ajuda agora?</h2><p class="m">Você não está sozinho.</p></div>
+${[['Pare e respire fundo','Inspire por 4s, segure 4s, expire 4s.'],['Saia do ambiente','Afaste-se do que está te provocando.'],['Ore com sinceridade','Fale com Deus. Ele te ouve agora.'],['Fale com alguém','Envie uma mensagem para seu contato.'],['Escolha o bem','Lembre-se: isso vai passar.']].map((x,i)=>`<div class="step"><span class="num">${i+1}</span><div><b>${x[0]}</b><br><small>${x[1]}</small></div></div>`).join('')}
+${n?`<a href="https://wa.me/${f}?text=${encodeURIComponent('Preciso de ajuda agora. Pode conversar comigo?')}" target="_blank" rel="noopener"><button class="btn r" style="margin-top:10px">Enviar mensagem no WhatsApp</button></a>`:`<button class="btn r" style="margin-top:10px" data-a="goperfil">Cadastrar contato do discipulador</button>`}
+<button class="btn o" style="margin-top:8px" data-a="orar">Iniciar oração guiada</button><p class="m" style="text-align:center">☎ CVV <a href="tel:188">188</a> – Apoio emocional 24h</p>`)}
+function conf(v){sheet(`<h3>Confirmar registro do dia</h3><p class="m">Tem certeza da sua escolha?</p><button class="btn ${v=='r'?'r':''}" data-a="ok" data-v="${v}">${v=='v'?'✔ RESISTI':'✖ RECAÍ'}</button><button class="btn g" style="margin-top:10px" data-a="close">Cancelar</button>`)}
+document.addEventListener('input',e=>{if(e.target.id=='nota'){const t=today();if(D.e[t]){D.e[t].n=e.target.value;save()}else draft=e.target.value;$('#cnt').textContent=e.target.value.length+'/300'}});
+document.addEventListener('change',e=>{if(e.target.id=='fi'){const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result);if(!j.e||!j.start)throw 0;D=Object.assign(D,j);save();$('#lk').className='';render();alert('Backup importado.')}catch(x){alert('Arquivo inválido.')}};r.readAsText(e.target.files[0])}});
+document.addEventListener('click',async e=>{const a=e.target.closest('[data-a]');if(!a)return;const v=a.dataset.v,t=today();
+switch(a.dataset.a){
+case'tab':tab=v;if(v=='dev')devDay=0;render();break;case'sos':sos();break;case'close':closeS();render();break;
+case'alt':alt=true;render();break;case'reg':conf(v);break;
+case'ok':D.e[t]={s:v,n:(D.e[t]&&D.e[t].n)||draft};draft='';alt=false;save();render();sheet(`<h3>Registro salvo! 🙌</h3><p class="m">${v=='v'?'Deus se alegra com sua escolha de hoje.':'Deus não desiste de você. Levante-se e continue.'}</p><p class="vs">${v=='v'?'Não nos cansemos de fazer o bem, porque a seu tempo ceifaremos.':'Perto está o Senhor dos que têm o coração quebrantado.'}</p><span class="lime">${v=='v'?'Gálatas 6:9':'Salmos 34:18'}</span><button class="btn" style="margin-top:14px" data-a="close">Continuar</button>`);break;
+case'nx':$('#lk').className='';sheet(`<h2>Vamos começar</h2><small>Seu nome</small><input id="nm"><small>Nome do seu discipulador</small><input id="dn"><small>WhatsApp do discipulador (com DDD) — usado no SOS e nos relatórios</small><input id="ct" type="tel" inputmode="tel" placeholder="(61) 99999-9999"><button class="btn" style="margin-top:14px" data-a="go">Começar jornada</button>`);break;
+case'k':{if(v=='⌫')pk=pk.slice(0,-1);else if(v!==''&&pk.length<6)pk+=v;document.querySelectorAll('#dots i').forEach((x,i)=>x.className=i<pk.length?'f':'');
+if(pk.length>=4&&await sha(pk)==D.pin){pk='';$('#lk').className='';render()}else if(pk.length==6){const dt=$('#dots');dt.classList.add('sh');setTimeout(()=>{dt.classList.remove('sh');pk='';dt.querySelectorAll('i').forEach(x=>x.className='')},350)}}break;
+case'fg':sheet(`<h3>Esqueceu o PIN?</h3><p class="m">Não há recuperação, porque os dados ficam só no seu aparelho. Se você tem um backup, apague os dados abaixo e importe o backup depois. Isso apaga o progresso deste aparelho.</p><button class="btn r" data-a="wipe">Apagar dados e recomeçar</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`);break;
+case'wipe':if(confirm('Apagar todos os dados deste aparelho?')){localStorage.removeItem(K);location.reload()}break;
+case'mood':(D.mood=D.mood||{})[t]=+v;save();render();break;
+case'cm':cm+=+v;render();break;case'ph':$('#pf').click();break;
+case'rel':rel();break;case'rf':D.freq=+v;save();rel();break;
+case'gen':{const n=D.freq||7,a=add(t,-(n-1)),st=stats(),L=[],f=k=>k.slice(8)+'/'+k.slice(5,7);let vi=0,re=0,bl=0,pm=0;
+for(let i=0;i<n;i++){const k=add(a,i);if(k<D.start)continue;const e=D.e[k];if(!e)bl++;else if(e.s=='v')vi++;else re++;pm+=D.pr[k]||0;if(e&&e.n&&$('#qn').checked)L.push('- '+f(k)+': '+e.n)}
+const dv=Object.entries(D.pd||{}).filter(x=>x[1].ok&&x[1].dt>=a&&x[1].dt<=t);if($('#qn').checked)dv.forEach(x=>{const qs=(DEV[x[0]]||{}).q||[];(x[1].r||[]).forEach((r,i)=>{if(r)L.push('- Dia '+x[0]+' – '+qs[i]+': '+r)})});const q=[['O que foi bom','#q1'],['Maior gatilho','#q2'],['Preciso de ajuda com','#q3']].map(x=>[x[0],$(x[1]).value.trim()]).filter(x=>x[1]).map(x=>x[0]+': '+x[1]);
+RT=`Relatório ${n==7?'semanal':'quinzenal'} – Trilha Coração Branco\nPeríodo: ${f(a<D.start?D.start:a)} a ${f(t)}\n✔ Vitórias: ${vi}\n✖ Recaídas: ${re}\nDias sem registro: ${bl}\n🔥 Sequência atual: ${st.cur} dia(s)\n🙏 Oração: ${pm} min\n📖 Devocionais concluídos: ${dv.length}`+(L.length?'\n\nNotas e respostas:\n'+L.join('\n'):'')+(q.length?'\n\n'+q.join('\n'):'');
+sheet(`<h3>Revise a mensagem</h3><small>Você pode editar antes de enviar.</small><textarea id="rt" style="min-height:240px">${esc(RT)}</textarea><button class="btn" style="margin-top:8px" data-a="rw">Enviar pelo WhatsApp</button><button class="btn g" style="margin-top:8px" data-a="rs">Compartilhar</button><button class="btn g" style="margin-top:8px" data-a="rc">Copiar</button><button class="btn g" style="margin-top:8px" data-a="close">Fechar</button>`)}break;
+case'rw':{const x=D.contact.replace(/\D/g,''),y=x.length<=11?'55'+x:x;D.lastRep=t;save();window.open('https://wa.me/'+(x?y:'')+'?text='+encodeURIComponent($('#rt').value),'_blank')}break;
+case'rs':D.lastRep=t;save();try{navigator.share?await navigator.share({text:$('#rt').value}):alert('Compartilhamento não disponível.')}catch(_){}break;
+case'rc':try{await navigator.clipboard.writeText($('#rt').value);D.lastRep=t;save();alert('Mensagem copiada.')}catch(_){alert('Não foi possível copiar.')}break;
+case'snd':D.snd=D.snd===false;save();render();break;
+case'ent':{const e=D.e[v],ok=e.s=='v';sheet(`<h3>${v.slice(8)}/${v.slice(5,7)}/${v.slice(0,4)} – ${ok?'Vitória':'Recaída'}</h3><p class="m">${esc(e.n||'Sem nota')}</p><button class="btn" data-a="close">Fechar</button>`)}break;
+case'rtry':lAu(devDay);render();break;
+case'ap':if(AU.paused)AU.play().catch(()=>{});else AU.pause();break;
+case'asp':D.sp=D.sp==1?1.25:D.sp==1.25?1.5:1;AU.playbackRate=D.sp;save();render();break;
+case'cd':{const p=pdd();p.ok=1;p.dt=t;save();render();sheet(`<h3>Dia ${devDay} concluído 🙌</h3><p class="m">Agora registre, na tela Hoje, como foi o seu dia.</p><button class="btn" data-a="close">Continuar</button>`)}break;
+case'trilha':tab='trilha';render();break;
+case'min':T.m=+v;T.left=T.m*60;render();break;case'play':play();break;case'pause':tick();stop();render();break;case'cancel':stop();T.left=T.m*60;render();break;
+case'orar':closeS();tab='oracao';render();break;case'goperfil':closeS();tab='cfg';render();break;
+case'dp':devDay=Math.max(1,devDay-1);render();break;case'dn':devDay=Math.min(dia(),devDay+1);render();break;
+case'fs':D.fs=D.fs>=23?16:D.fs+2;save();render();break;case'fav':D.fav[devDay]=!D.fav[devDay];save();render();break;
+case'share':{const x=DEV[devDay]||dflt,m=x.t+' – Trilha Coração Branco';try{navigator.share?await navigator.share({title:m,text:m+'\n'+x.tx}):alert('Compartilhamento não disponível.')}catch(_){}}break;
+case'spk':if(spk){speechSynthesis.cancel();spk=false}else{const x=DEV[devDay]||dflt,u=new SpeechSynthesisUtterance(x.t+'. '+x.tx);u.lang='pt-BR';u.onend=()=>{spk=false;render()};speechSynthesis.speak(u);spk=true}render();break;
+case'filt':filt=v;render();break;
+case'sct':D.name=$('#nm').value.trim();D.dn=$('#dn').value.trim();D.contact=$('#ct').value.trim();save();alert('Contato salvo.');break;
+case'go':D.start=today();D.name=$('#nm').value.trim();D.dn=$('#dn').value.trim();D.contact=$('#ct').value.trim();save();closeS();render();break;
+case'pin':sheet(`<h3>PIN de proteção</h3><small>4 a 6 números. Deixe vazio para remover.</small><input id="pn" type="password" inputmode="numeric" maxlength="6"><button class="btn" style="margin-top:12px" data-a="spin">Salvar</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`);break;
+case'spin':{const p=$('#pn').value;if(p&&!/^\d{4,6}$/.test(p))return alert('Use de 4 a 6 números.');D.pin=p?await sha(p):'';save();closeS();render()}break;
+case'unl':if(await sha($('#pn').value)==D.pin){closeS();render()}else $('#er').textContent='PIN incorreto.';break;
+case'exp':{const b=new Blob([JSON.stringify(D)],{type:'application/json'}),l=document.createElement('a');l.href=URL.createObjectURL(b);l.download='trilha-coracao-branco-backup.json';l.click()}break;
+case'imp':$('#fi').click();break;
+case'rst':sheet(`<h3>Reiniciar jornada</h3><p class="m">A contagem volta ao dia 1. Escolha o que fazer com o histórico.</p><button class="btn" data-a="rk">Reiniciar e manter histórico</button><button class="btn r" style="margin-top:8px" data-a="ra">Reiniciar e apagar tudo</button><button class="btn g" style="margin-top:8px" data-a="close">Cancelar</button>`);break;
+case'rk':D.start=today();save();closeS();tab='hoje';render();break;
+case'ra':D.start=today();D.e={};D.pr={};D.fav={};save();closeS();tab='hoje';render();break}});
+document.addEventListener('change',e=>{if(e.target.id=='pf'&&e.target.files[0]){const i=new Image();i.onload=()=>{const c=document.createElement('canvas');c.width=c.height=160;const s=Math.min(i.width,i.height);c.getContext('2d').drawImage(i,(i.width-s)/2,(i.height-s)/2,s,s,0,0,160,160);D.photo=c.toDataURL('image/jpeg',.8);save();render()};i.src=URL.createObjectURL(e.target.files[0])}});
+const AU=new Audio();AU.preload='metadata';
+function lAu(d){AU.pause();AU.err=false;AU.msg='';AU.tr=0;AU.dataset.d=d;const x=DEV[d];if(x&&x.au){AU.src='audio/'+x.au;AU.playbackRate=D.sp||1}else AU.removeAttribute('src')}
+AU.onloadedmetadata=()=>{const p=(D.ap||{})[AU.dataset.d];if(p&&p<AU.duration-3)AU.currentTime=p;if(tab=='dev')render()};
+AU.ontimeupdate=()=>{const s=$('#sk'),tt=$('#tt');if(s){s.max=AU.duration||0;s.value=AU.currentTime}if(tt)tt.textContent=fmt(Math.floor(AU.currentTime))+' / '+fmt(Math.floor(AU.duration||0));const d=AU.dataset.d;if(d&&Math.floor(AU.currentTime)%5==0){(D.ap=D.ap||{})[d]=Math.floor(AU.currentTime);save()}};
+AU.onplay=AU.onpause=()=>{const b=$('#apb');if(b)b.innerHTML=AU.paused?I(P.play,24):'❚❚'};
+AU.onended=()=>{const d=AU.dataset.d;((D.pd=D.pd||{})[d]=D.pd[d]||{}).ou=1;(D.ap=D.ap||{})[d]=0;save();if(tab=='dev')render()};
+AU.onerror=()=>{if(!AU.getAttribute('src'))return;const x=DEV[AU.dataset.d]||{};if(!AU.tr&&x.au){AU.tr=1;AU.src=x.au;return}AU.err=true;if(tab=='dev')render();
+fetch(AU.src,{method:'HEAD',cache:'no-store'}).then(r=>{AU.msg=r.ok?'O arquivo existe, mas o celular não conseguiu tocar. Confira se é um mp3 de verdade, e não outro formato com o nome trocado.':'Arquivo não encontrado ('+r.status+'): audio/'+x.au+'. Confira o nome e a pasta no GitHub.'}).catch(()=>{AU.msg='Sem conexão para verificar o arquivo.'}).then(()=>{if(tab=='dev')render()})};
+const pdd=()=>((D.pd=D.pd||{})[devDay]=D.pd[devDay]||{});
+document.addEventListener('input',e=>{const t=e.target;if(t.id=='sk')AU.currentTime=+t.value;if(t.dataset&&t.dataset.q!==undefined){const p=pdd();(p.r=p.r||[])[+t.dataset.q]=t.value;save()}});
+document.addEventListener('change',e=>{const t=e.target;if(t.dataset&&t.dataset.c!==undefined){const p=pdd();(p.c=p.c||[])[+t.dataset.c]=t.checked;save()}});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+render();if(D.start&&D.pin)lock();
+</script></body></html>
