@@ -6,7 +6,7 @@ window.CONTEUDO={
  "1": {
   "t": "Compromisso com você mesmo",
   "lit": "Daniel 1:8 · João 8:32",
-  "au": "dia-001.mp3.wav",
+  "au": "dia-001.mp3",
   "pn": "A culpa dói, mas não decide nada. Só a decisão sustenta.",
   "at": [
    "Pegue um papel e escreva uma frase de compromisso. Exemplo: “Eu decido hoje caminhar em liberdade, porque eu valho esta luta.”",
